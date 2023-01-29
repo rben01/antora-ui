@@ -439,6 +439,7 @@ html.is-clipped--nav {
 	color: var(--navbar-title-color);
 	font-size: inherit;
 	font-weight: 500;
+	font-variation-settings: "wght" 500;
 	margin: 0;
 	padding: 0.25em 0 0.125em;
 }
@@ -481,6 +482,7 @@ html.is-clipped--nav {
 .is-current-page > .nav-link,
 .is-current-page > .nav-text {
 	font-weight: 500;
+	font-variation-settings: "wght" 500;
 }
 .nav-panel-explore {
 	background: var(--navbar-header-bg-color);
@@ -565,6 +567,7 @@ html.is-clipped--nav {
 }
 .nav-panel-explore .component .title {
 	font-weight: 500;
+	font-variation-settings: "wght" 500;
 }
 .nav-panel-explore .versions {
 	display: flex;
@@ -589,6 +592,7 @@ html.is-clipped--nav {
 	border-color: currentColor;
 	opacity: 0.9;
 	font-weight: 500;
+	font-variation-settings: "wght" 500;
 }
 @media screen and (max-width: 1023.5px) {
 	aside.toc.sidebar {
@@ -776,6 +780,7 @@ a + .breadcrumbs {
 	color: var(--toc-title-color);
 	font-size: 0.88889rem;
 	font-weight: 500;
+	font-variation-settings: "wght" 500;
 	line-height: 1.3;
 	margin: 0 -0.5px;
 	padding-bottom: 0.25rem;
@@ -874,6 +879,7 @@ a + .breadcrumbs {
 .doc h6 {
 	color: var(--header-text-color);
 	font-weight: 400;
+	font-variation-settings: "wght" 400;
 	hyphens: none;
 	line-height: 1.3;
 	margin: 1rem 0 0;
@@ -912,6 +918,7 @@ a + .breadcrumbs {
 .doc h3:not(.discrete),
 .doc h4:not(.discrete) {
 	font-weight: 500;
+	font-variation-settings: "wght" 500;
 }
 .doc h1 .anchor,
 .doc h2 .anchor,
@@ -926,6 +933,7 @@ a + .breadcrumbs {
 	visibility: hidden;
 	font-size: 0.8em;
 	font-weight: 400;
+	font-variation-settings: "wght" 400;
 	padding-top: 0.05em;
 }
 .doc h1 .anchor::before,
@@ -1160,6 +1168,7 @@ a + .breadcrumbs {
 	height: 1.25rem;
 	line-height: 1;
 	font-weight: 500;
+	font-variation-settings: "wght" 500;
 	text-transform: uppercase;
 	border-radius: 0.45rem;
 	transform: translate(-0.5rem, -50%);
@@ -1365,6 +1374,7 @@ a + .breadcrumbs {
 	font-size: 0.88889rem;
 	font-style: italic;
 	font-weight: 500;
+	font-variation-settings: "wght" 500;
 	hyphens: none;
 	letter-spacing: 0.01em;
 	padding-bottom: 0.075rem;
@@ -1376,6 +1386,7 @@ a + .breadcrumbs {
 .doc .ulist .title {
 	font-style: italic;
 	font-weight: 500;
+	font-variation-settings: "wght" 500;
 	margin-bottom: 0.25rem;
 }
 .doc .imageblock .title {
@@ -1453,6 +1464,7 @@ a + .breadcrumbs {
 .doc .sidebarblock > .content > .title {
 	font-size: 1.25rem;
 	font-weight: 500;
+	font-variation-settings: "wght" 500;
 	line-height: 1.3;
 	margin-bottom: -0.3em;
 	text-align: center;
@@ -1580,6 +1592,7 @@ a + .breadcrumbs {
 }
 .doc td.hdlist1 {
 	font-weight: 500;
+	font-variation-settings: "wght" 500;
 	padding-right: 0.25rem;
 }
 .doc td.hdlist2 {
@@ -1671,6 +1684,7 @@ a + .breadcrumbs {
 	content: "\203a";
 	font-size: 1.1em;
 	font-weight: 500;
+	font-variation-settings: "wght" 500;
 	line-height: 0.90909;
 }
 .doc :not(pre).nowrap {
@@ -1740,6 +1754,7 @@ nav.pagination .next::before {
 }
 nav.pagination a {
 	font-weight: 500;
+	font-variation-settings: "wght" 500;
 	line-height: 1.3;
 	position: relative;
 }
@@ -1747,6 +1762,7 @@ nav.pagination a::after,
 nav.pagination a::before {
 	color: var(--page-version-missing-text-color);
 	font-weight: 400;
+	font-variation-settings: "wght" 400;
 	font-size: 1.5em;
 	line-height: 0.75;
 	position: absolute;
