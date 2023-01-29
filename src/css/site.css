@@ -865,6 +865,8 @@ a + .breadcrumbs {
 	margin: 0 auto;
 	max-width: 40rem;
 	padding: 0 1rem 4rem;
+	font-weight: 400;
+	font-variation-settings: "wght" 350;
 }
 @media screen and (min-width: 1024px) {
 	.doc {
