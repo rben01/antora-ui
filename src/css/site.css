@@ -58,7 +58,7 @@
 	--code-text-color: #222;
 	--abbrev-text-color: #222;
 	--abbrev-border-color: #ddd;
-	--blockquote-bg-color: #e0e0e0;
+	--blockquote-bg-color: #f6f6f6;
 	--blockquote-border-color: #ddd;
 	--blockquote-cite-color: #555;
 	--blockquote-text-color: #262628;
@@ -135,7 +135,7 @@
 
 		--default-bg-color: #080808;
 		--default-text-color: white;
-		--doc-text-color: #f1f1f1;
+		--doc-text-color: #fcfcfc;
 		--toolbar-bg-color: #070707;
 		--toolbar-text-color: #cccccc;
 		--top-bar-bg-color: #0967b4;
@@ -167,7 +167,7 @@
 		--visited-link-text-color: rgb(189, 125, 241);
 		--link-focus-text-color: #29c8d3;
 		--github-icon-color: #eee;
-		--header-text-color: #eee;
+		--header-text-color: #f8f8f8;
 		--small-header-text-color: #a0a0a0;
 		--h-rule-color: rgb(56, 56, 56);
 		--code-text-color: rgb(228, 228, 228);
@@ -364,7 +364,7 @@ object[type="image/svg+xml"]:not([width]) {
 	left: 0;
 	width: 100%;
 	font-size: 0.94444rem;
-	z-index: 1;
+	z-index: 9;
 	visibility: hidden;
 }
 @media screen and (min-width: 769px) {
@@ -389,6 +389,7 @@ object[type="image/svg+xml"]:not([width]) {
 	position: relative;
 	top: 2.5rem;
 	height: calc(100vh - 6rem);
+	z-index: 9;
 }
 @media screen and (min-width: 769px) {
 	.nav {
@@ -410,6 +411,7 @@ object[type="image/svg+xml"]:not([width]) {
 	display: flex;
 	flex-direction: column;
 	height: inherit;
+	z-index: inherit;
 }
 html.is-clipped--nav {
 	overflow-y: hidden;
@@ -496,6 +498,7 @@ html.is-clipped--nav {
 	right: 0;
 	bottom: 0;
 	left: 0;
+	z-index: inherit;
 }
 .nav-panel-explore:not(:first-child) {
 	top: auto;
@@ -637,7 +640,7 @@ html.is-clipped--nav {
 	justify-content: flex-start;
 	position: sticky;
 	top: 3.5rem;
-	z-index: 2;
+	z-index: 20;
 }
 .toolbar a {
 	color: inherit;
@@ -1825,6 +1828,7 @@ body {
 	color: var(--default-text-color);
 }
 .navbar-brand .navbar-item:first-child {
+	color: white;
 	align-self: center;
 	padding: 0;
 	font-size: 1.22222rem;
@@ -1844,6 +1848,10 @@ body {
 	flex: auto;
 	justify-content: flex-end;
 }
+/* .nav slightly raises specificity */
+.navbar #search-field {
+	margin-right: 0.5rem;
+}
 #search-input {
 	color: var(--search-text-color);
 	font-family: inherit;
@@ -1853,6 +1861,10 @@ body {
 	border-radius: 0.1em;
 	line-height: 1.5;
 	padding: 0 0.25em;
+}
+.navbar #search-input {
+	/* top is slightly bigger to account for Rotunda font being slightly offset from bottom */
+	padding: 0.35em 0.25em 0.15em;
 }
 #search-input:disabled {
 	background-color: var(--search-border-color);
@@ -1997,6 +2009,9 @@ body {
 	}
 }
 @media screen and (min-width: 1024px) {
+	.navbar #search-field {
+		margin-right: unset;
+	}
 	.navbar-burger {
 		display: none;
 	}
