@@ -1,1 +1,4 @@
 {{!-- Add additional meta tags here --}}
+{{#if (not page.description.isEmpty)}}
+	<meta name="description" content="{{page.description}}">
+{{/if}}

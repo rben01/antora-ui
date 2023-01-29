@@ -1,6 +1,22 @@
 <article class="doc">
-	{{#with page.title}}
-		<h1 class="page">{{{this}}}</h1>
-	{{/with}}
+	<div class="title-container">
+		{{#with page.title}}
+			<h1 class="page">{{{this}}}</h1>
+		{{/with}}
+		{{#with page.attributes}}
+			{{#if this.docdate}}
+				{{#if this.doc-updated-date}}
+					<div class="subtitle">
+						<span class="subtitle-item doc-date">Published {{this.docdate}}</span><span
+							class="subtitle-item doc-updated-date">Last updated {{this.doc-updated-date}}</span>
+					</div>
+				{{else}}
+					<div class="subtitle">
+						<span class="subtitle-item doc-date">Published {{this.docdate}}</span>
+					</div>
+				{{/if}}
+			{{/if}}
+		{{/with}}
+	</div>
 	{{{page.contents}}} {{> pagination}}
 </article>

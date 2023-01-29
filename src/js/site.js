@@ -188,11 +188,12 @@ function __get_copy_icon_path() {
 					f.appendChild(m),
 					f.appendChild(u),
 					!document.getElementById("toc") &&
-						d.querySelector("h1.page ~ :not(.is-before-toc)"));
-			e &&
+						(d.querySelector(".title-container .subtitle") ||
+							d.querySelector("h1.page ~ :not(.is-before-toc)")));
+			(console.log(e) || e) &&
 				(((m = document.createElement("aside")).className = "toc embedded"),
 				m.appendChild(f.cloneNode(!0)),
-				e.parentNode.insertBefore(m, e)),
+				e.parentNode.insertBefore(m, e.nextSibling)),
 				window.addEventListener("load", function () {
 					p(), window.addEventListener("scroll", p);
 				});
