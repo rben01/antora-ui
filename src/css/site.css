@@ -24,7 +24,7 @@
 	--toolbar-bg-color: #f9f9f9;
 	--toolbar-text-color: #444444;
 	--top-bar-bg-color: #0a6bac;
-	--navbar-bg-color: #d5d5d5;
+	--navbar-bg-color: #e5e5e5;
 	--navbar-header-bg-color: #fafafa;
 	--navbar-shadow-color-1: #dedede;
 	--navbar-shadow-color-2: #e1e1e1;
@@ -48,8 +48,9 @@
 	--body-text-color: black;
 	--title-text-color: #111;
 	--link-text-color: #0a6bac;
-	--link-hover-color: #0d77be;
+	--link-hover-color: #2391db;
 	--visited-link-text-color: rgb(124, 58, 156);
+	--visited-link-hover-color: rgb(165, 88, 203);
 	--link-focus-text-color: #229ea7;
 	--github-icon-color: #111;
 	--header-text-color: #111;
@@ -111,6 +112,7 @@
 	--thumb-border-color: white;
 	--thumb-shadow-color: #ddd;
 	--gist-table-bg-color: white;
+	--admon-text-color: white;
 	--admon-shadow-color: rgba(0, 0, 0, 0.5);
 	--admon-note-icon-color: #217ee7;
 	--admon-tip-shadow-color: rgba(155, 155, 0, 0.8);
@@ -165,6 +167,7 @@
 		--link-text-color: #71c2f8;
 		--link-hover-color: #99d6ff;
 		--visited-link-text-color: rgb(189, 125, 241);
+		--visited-link-hover-color: rgb(212, 142, 248);
 		--link-focus-text-color: #29c8d3;
 		--github-icon-color: #eee;
 		--header-text-color: #f8f8f8;
@@ -275,13 +278,8 @@ a {
 	color: var(--link-text-color);
 	transition: all 0.2s ease;
 }
-.doc a {
-	text-decoration-style: dotted;
-	text-decoration-thickness: 1px;
-}
-.doc a:hover {
-	text-decoration: underline;
-	text-decoration-style: solid;
+a:visited {
+	color: var(--visited-link-text-color);
 }
 a:active {
 	background-color: none;
@@ -964,8 +962,18 @@ a + .breadcrumbs {
 }
 .doc a {
 	color: var(--link-text-color);
+	text-decoration-style: dotted;
+	text-decoration-thickness: 1px;
+}
+.doc a:visited {
+	color: var(--visited-link-text-color);
+}
+.doc a:visited:hover {
+	color: var(--visited-link-hover-color);
 }
 .doc a:hover {
+	text-decoration: underline;
+	text-decoration-style: solid;
 	color: var(--link-hover-color);
 }
 .doc a.bare {
@@ -1046,6 +1054,9 @@ a + .breadcrumbs {
 .doc details,
 .doc hr {
 	margin: 1rem 0 0;
+}
+.doc dd .listingblock {
+	margin: 0 0 1rem;
 }
 .doc table.tableblock {
 	font-size: 0.83333rem;
@@ -1156,6 +1167,7 @@ a + .breadcrumbs {
 	table-layout: fixed;
 	position: relative;
 	width: 100%;
+	border-collapse: separate;
 }
 .doc .admonitionblock td.content {
 	padding: 1rem 1rem 0.75rem;
@@ -1163,7 +1175,7 @@ a + .breadcrumbs {
 	width: 100%;
 	overflow-wrap: break-word;
 	border-radius: 5px;
-	border: 5px solid var(--admonition-border-color);
+	border: 3px solid var(--admonition-border-color);
 }
 .doc .admonitionblock .icon {
 	position: absolute;
@@ -1181,23 +1193,23 @@ a + .breadcrumbs {
 }
 .doc .admonitionblock.caution .icon {
 	background-color: var(--admon-caution-icon-color);
-	color: var(--default-text-color);
+	color: var(--admon-text-color);
 }
 .doc .admonitionblock.important .icon {
 	background-color: var(--admon-important-icon-color);
-	color: var(--default-text-color);
+	color: var(--admon-text-color);
 }
 .doc .admonitionblock.note .icon {
 	background-color: var(--admon-note-icon-color);
-	color: var(--default-text-color);
+	color: var(--admon-text-color);
 }
 .doc .admonitionblock.tip .icon {
 	background-color: var(--admon-tip-icon-color);
-	color: var(--default-text-color);
+	color: var(--admon-text-color);
 }
 .doc .admonitionblock.warning .icon {
 	background-color: var(--admon-warning-icon-color);
-	color: var(--default-text-color);
+	color: var(--admon-text-color);
 }
 .doc .admonitionblock .icon i {
 	display: inline-flex;
@@ -1655,7 +1667,7 @@ a + .breadcrumbs {
 }
 .doc kbd {
 	display: inline-block;
-	font-size: 0.66667rem;
+	font-size: 0.8em;
 	background: var(--kbd-not-keyseq-bg-color);
 	border: 1px solid var(--kbd-not-keyseq-border-color);
 	border-radius: 0.25em;
@@ -1664,7 +1676,7 @@ a + .breadcrumbs {
 	padding: 0.25em 0.5em;
 	vertical-align: text-bottom;
 	white-space: nowrap;
-	color: var(--default-bg-color);
+	color: var(--kbd-not-keyseq-text-color);
 }
 .doc .keyseq,
 .doc kbd {
@@ -1814,7 +1826,7 @@ body {
 	position: fixed;
 	top: 0;
 	width: 100%;
-	z-index: 4;
+	z-index: 30;
 }
 .navbar a {
 	text-decoration: none;
