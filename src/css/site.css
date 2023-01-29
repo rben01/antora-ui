@@ -20,12 +20,14 @@
 	--doc-text-color: #111111;
 	--toolbar-bg-color: #f9f9f9;
 	--toolbar-text-color: #444444;
+	--toolbar-link-hover-color: #747474;
 	--top-bar-bg-color: #0a6bac;
 	--navbar-bg-color: #e5e5e5;
 	--navbar-header-bg-color: #fafafa;
 	--navbar-shadow-color-1: #dedede;
 	--navbar-shadow-color-2: #e1e1e1;
 	--navbar-title-color: #424242;
+	--navbar-text-color: var(--default-text-color);
 	--navbar-text-color-faint: #5d5d5d;
 	--navbar-item-outline-color: #c1c1c1;
 	--page-version-gradient-color: #f0f0f0;
@@ -137,12 +139,14 @@
 		--doc-text-color: #fcfcfc;
 		--toolbar-bg-color: #070707;
 		--toolbar-text-color: #cccccc;
+		--toolbar-link-hover-color: #ececec;
 		--top-bar-bg-color: #0967b4;
 		--navbar-bg-color: #1f1f1f;
 		--navbar-header-bg-color: #0f0f0f;
 		--navbar-shadow-color-1: #2c2c2c;
 		--navbar-shadow-color-2: #242424;
 		--navbar-title-color: #c8c8c8;
+		--navbar-text-color: var(--default-text-color);
 		--navbar-text-color-faint: #b6b6b6;
 		--navbar-item-outline-color: #3a3a3a;
 		--page-version-gradient-color: #0f0f0f;
@@ -400,7 +404,7 @@ object[type="image/svg+xml"]:not([width]) {
 	}
 }
 .nav a {
-	color: inherit;
+	color: var(--navbar-text-color);
 }
 .nav .panels {
 	display: flex;
@@ -429,6 +433,9 @@ html.is-clipped--nav {
 	bottom: 0;
 	left: 0;
 }
+.is-current-page {
+	font-style: italic;
+}
 .nav-menu {
 	min-height: 100%;
 	padding: 0.5rem 0.75rem;
@@ -436,12 +443,26 @@ html.is-clipped--nav {
 	position: relative;
 }
 .nav-menu h3.title {
-	color: var(--navbar-title-color);
+	color: var(--navbar-text-color);
 	font-size: inherit;
-	font-weight: 500;
-	font-variation-settings: "wght" 500;
+	font-weight: 400;
+	font-variation-settings: "wght" 400;
 	margin: 0;
 	padding: 0.25em 0 0.125em;
+}
+.nav-menu h3.title a {
+	text-decoration: underline;
+	text-decoration-style: dotted;
+}
+.nav-menu h3.title a:hover {
+	text-decoration-style: solid;
+}
+.nav-menu h3.title.is-current-page a:not(:hover) {
+	text-decoration: none;
+}
+.nav-menu h3.title a:hover,
+.nav-menu h3.title.is-current-page a {
+	color: var(--toolbar-text-color);
 }
 .nav-list {
 	list-style: none;
@@ -481,8 +502,22 @@ html.is-clipped--nav {
 }
 .is-current-page > .nav-link,
 .is-current-page > .nav-text {
-	font-weight: 500;
-	font-variation-settings: "wght" 500;
+	font-weight: 400;
+	font-variation-settings: "wght" 400;
+}
+.nav .nav-list a {
+	text-decoration: underline;
+	text-decoration-style: dotted;
+}
+.nav .nav-list a:hover {
+	text-decoration-style: solid;
+}
+.nav .nav-list .is-current-page a:not(:hover) {
+	text-decoration: none;
+}
+.nav .nav-list a:hover,
+.nav .nav-list .is-current-page a {
+	color: var(--toolbar-text-color);
 }
 .nav-panel-explore {
 	background: var(--navbar-header-bg-color);
@@ -639,6 +674,12 @@ html.is-clipped--nav {
 }
 .toolbar a {
 	color: inherit;
+	text-decoration: underline;
+	text-decoration-style: dotted;
+}
+.toolbar a:hover {
+	color: var(--toolbar-link-hover-color);
+	text-decoration-style: solid;
 }
 .nav-toggle {
 	background: var(--icon-path-menu) no-repeat 50% 47.5%;
@@ -1230,6 +1271,8 @@ a + .breadcrumbs {
 }
 .doc .admonitionblock .icon i::after {
 	content: attr(title);
+	position: relative;
+	top: 0.1125em;
 }
 .doc .imageblock,
 .doc .videoblock {
@@ -2186,7 +2229,7 @@ footer.footer {
 		padding-bottom: 2rem;
 	}
 	.doc .admonitionblock td.icon {
-		color-adjust: exact;
+		print-color-adjust: exact;
 	}
 	.doc .listingblock code[data-lang]::before {
 		display: block;
