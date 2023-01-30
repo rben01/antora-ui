@@ -6,7 +6,7 @@
 	--mono-font-size: 0.95em;
 	--body-letter-spacing: -0.03em;
 	--default-font-weight: 350;
-	--bold-font-weight: 600;
+	--bold-font-weight: 575;
 	--header-bar-height: 3.5rem;
 	--toolbar-height: 2.5rem;
 
@@ -454,8 +454,7 @@ html.is-clipped--nav {
 	bottom: 0;
 	left: 0;
 }
-.is-current-page,
-.nav-panel-explore .is-current {
+.nav-panel-menu .is-current-page {
 	/* font-weight: var(--bold-font-weight); */
 	font-variation-settings: "wght" var(--bold-font-weight);
 }
@@ -474,6 +473,10 @@ html.is-clipped--nav {
 	font-size: inherit;
 	margin: 0;
 	padding: 0.25em 0 0.125em;
+}
+.nav-menu h3.title.is-current-page {
+	/* font-weight: var(); */
+	font-variation-settings: "wght" var(--bold-font-weight);
 }
 .nav-menu h3.title a {
 	text-decoration: underline;
@@ -630,8 +633,12 @@ html.is-clipped--nav {
 	margin-bottom: 0.75rem;
 }
 .nav-panel-explore .component .title {
-	/* font-weight: 500; */
-	font-variation-settings: "wght" 500;
+	/* font-weight: var(); */
+	font-variation-settings: "wght" var(--default-font-weight);
+}
+.nav-panel-explore .component.is-current .title {
+	/* font-weight: var(); */
+	font-variation-settings: "wght" var(--bold-font-weight);
 }
 .nav-panel-explore .versions {
 	display: flex;
