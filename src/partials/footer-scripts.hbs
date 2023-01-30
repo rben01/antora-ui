@@ -138,6 +138,19 @@
 	}
 	set_up_footnotes()
 </script>
+{{!-- Set some element titles --}}
+<script>
+	function add_titles() {
+		const elems = document.querySelectorAll(".ui-icon.nav-menu-icon");
+		for (let i = 0, len = elems.length; i < len; i++) {
+			const elem = elems[i];
+			if (elem.getAttribute('title') === null) {
+				elems[i].setAttribute("title", "Navigation menu icon: one bullet followed by three sub-bullets");
+			}
+		}
+	}
+	add_titles()
+</script>
 {{!-- fixes bad font-awesome icons by asciidoctor; not currently in use --}}
 {{!-- <script>
 	function fix_font_awesome() {
