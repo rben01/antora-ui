@@ -69,9 +69,10 @@
 	--blockquote-cite-color: #555;
 	--blockquote-text-color: #262628;
 	--vcard-text-color: #ddd;
-	--table-bg-color: white;
+	--table-bg-color: var(--default-bg-color);
 	--table-border-color: #ddd;
-	--table-head-foot-bg-color: whitesmoke;
+	--table-head-foot-gradient-start-color: #f1f1f1;
+	--table-head-foot-gradient-end-color: #e5e5e5;
 	--table-text-color: #222;
 	--table-stripe-bg-color: #f9f9f9;
 	--code-parent-bg-color: #f9f9f9;
@@ -191,9 +192,10 @@
 		--vcard-text-color: rgb(110, 110, 110);
 		--table-bg-color: var(--default-bg-color);
 		--table-border-color: rgb(44, 44, 44);
-		--table-head-foot-bg-color: rgb(22, 22, 22);
+		--table-head-foot-gradient-start-color: #2c2c2c;
+		--table-head-foot-gradient-end-color: #202020;
 		--table-text-color: #ccc;
-		--table-stripe-bg-color: #080808;
+		--table-stripe-bg-color: #141414;
 		--code-parent-bg-color: #0f0f0f;
 		--code-parent-border-color: #323232;
 		--inline-code-border-color: #202020;
@@ -315,9 +317,6 @@ strong,
 th {
 	/* font-weight: var(--bold-font-weight); */
 	font-variation-settings: "wght" var(--bold-font-weight);
-}
-:is(b, dt, strong, th) > * {
-	font-weight: var(--bold-font-weight);
 }
 :is(b, dt, strong, th) > :is(code, pre) {
 	font-weight: 700;
@@ -966,12 +965,7 @@ h6 {
 	font-weight: 400;
 }
 
-.doc h1,
-.doc h2,
-.doc h3,
-.doc h4,
-.doc h5,
-.doc h6 {
+.doc :is(h1, h2, h3, h4, h5, h6) {
 	color: var(--header-text-color);
 	/* font-weight: 400; */
 	font-variation-settings: "wght" 400;
@@ -1028,12 +1022,7 @@ h6 {
 	/* font-weight: 500; */
 	font-variation-settings: "wght" 500;
 }
-.doc h1 .anchor,
-.doc h2 .anchor,
-.doc h3 .anchor,
-.doc h4 .anchor,
-.doc h5 .anchor,
-.doc h6 .anchor {
+.doc :is(h1, h2, h3, h4, h5, h6) .anchor {
 	position: absolute;
 	text-decoration: none;
 	width: 1.75ex;
@@ -1044,20 +1033,10 @@ h6 {
 	font-variation-settings: "wght" 400;
 	padding-top: 0.05em;
 }
-.doc h1 .anchor::before,
-.doc h2 .anchor::before,
-.doc h3 .anchor::before,
-.doc h4 .anchor::before,
-.doc h5 .anchor::before,
-.doc h6 .anchor::before {
+.doc :is(h1, h2, h3, h4, h5, h6) .anchor::before {
 	content: "\00a7";
 }
-.doc h1:hover .anchor,
-.doc h2:hover .anchor,
-.doc h3:hover .anchor,
-.doc h4:hover .anchor,
-.doc h5:hover .anchor,
-.doc h6:hover .anchor {
+.doc :is(h1, h2, h3, h4, h5, h6):hover .anchor {
 	visibility: visible;
 }
 .doc dl,
@@ -1090,9 +1069,7 @@ h6 {
 	hyphens: none;
 	font-style: normal;
 }
-.doc .colist > table code,
-.doc p code,
-.doc thead code {
+.doc :is(.colist > table code, p code, thead code) {
 	color: var(--code-text-color);
 	background: var(--code-parent-bg-color);
 	border-radius: 0.25em;
@@ -1100,8 +1077,7 @@ h6 {
 	font-size: 0.95em;
 	padding: 0.125em 0.25em;
 }
-.doc code,
-.doc pre {
+.doc :is(code, pre) {
 	hyphens: none;
 }
 .doc pre {
@@ -1141,23 +1117,27 @@ h6 {
 .doc .line-through {
 	text-decoration: line-through;
 }
-.doc .dlist,
-.doc .exampleblock,
-.doc .hdlist,
-.doc .imageblock,
-.doc .listingblock,
-.doc .literalblock,
-.doc .olist,
-.doc .paragraph,
-.doc .partintro,
-.doc .quoteblock,
-.doc .sidebarblock,
-.doc .tabs,
-.doc .ulist,
-.doc .verseblock,
-.doc .videoblock,
-.doc details,
-.doc hr {
+
+.doc
+	:is(
+		.dlist,
+		.exampleblock,
+		.hdlist,
+		.imageblock,
+		.listingblock,
+		.literalblock,
+		.olist,
+		.paragraph,
+		.partintro,
+		.quoteblock,
+		.sidebarblock,
+		.tabs,
+		.ulist,
+		.verseblock,
+		.videoblock,
+		details,
+		hr
+	) {
 	margin: 0.8rem 0 0;
 }
 .doc dd .listingblock {
@@ -1166,10 +1146,13 @@ h6 {
 .doc table.tableblock {
 	font-size: 0.83333rem;
 }
-.doc .tablecontainer,
-.doc .tablecontainer + *,
-.doc :not(.tablecontainer) > table.tableblock,
-.doc :not(.tablecontainer) > table.tableblock + * {
+.dic
+	:is(
+		.tablecontainer,
+		.tablecontainer + *,
+		:not(.tablecontainer) > table.tableblock,
+		:not(.tablecontainer) > table.tableblock + *
+	) {
 	margin-top: 1.5rem;
 }
 .doc p.tableblock + p.tableblock {
@@ -1178,12 +1161,17 @@ h6 {
 .doc td.tableblock > .content > :first-child {
 	margin-top: 0;
 }
-.doc table.tableblock td,
-.doc table.tableblock th {
+.doc table.tableblock :is(thead, tfoot) {
+	background: linear-gradient(
+		to bottom,
+		var(--table-head-foot-gradient-start-color),
+		var(--table-head-foot-gradient-end-color)
+	);
+}
+.doc table.tableblock :is(td, th) {
 	padding: 0.5rem;
 }
-.doc table.tableblock,
-.doc table.tableblock > * > tr > * {
+.doc :is(table.tableblock, table.tableblock > * > tr > *) {
 	border: 0 solid var(--table-border-color);
 }
 .doc table.grid-all > * > tr > * {
@@ -1195,8 +1183,7 @@ h6 {
 .doc table.grid-rows > * > tr > * {
 	border-width: 1px 0;
 }
-.doc table.grid-all > thead th,
-.doc table.grid-rows > thead th {
+.doc :is(table.grid-all, table.grid-rows) > thead th {
 	border-bottom-width: 2.5px;
 }
 .doc table.frame-all {
@@ -1208,33 +1195,26 @@ h6 {
 .doc table.frame-sides {
 	border-width: 0 1px;
 }
-.doc table.frame-none > colgroup + * > :first-child > *,
-.doc table.frame-sides > colgroup + * > :first-child > * {
+.doc :is(table.frame-none, table.frame-sides) > colgroup + * > :first-child > * {
 	border-top-width: 0;
 }
 .doc table.frame-sides > :last-child > :last-child > * {
 	border-bottom-width: 0;
 }
-.doc table.frame-ends > * > tr > :first-child,
-.doc table.frame-none > * > tr > :first-child {
+.doc :is(table.frame-ends, table.frame-none) > * > tr > :first-child {
 	border-left-width: 0;
 }
-.doc table.frame-ends > * > tr > :last-child,
-.doc table.frame-none > * > tr > :last-child {
+.doc :is(table.frame-ends, table.frame-none) > * > tr > :last-child {
 	border-right-width: 0;
 }
-.doc table.stripes-all > tbody > tr,
-.doc table.stripes-even > tbody > tr:nth-of-type(2n),
-.doc table.stripes-hover > tbody > tr:hover,
-.doc table.stripes-odd > tbody > tr:nth-of-type(odd) {
+.doc
+	:is(
+		table.stripes-all > tbody > tr,
+		table.stripes-even > tbody > tr:nth-of-type(even),
+		table.stripes-hover > tbody > tr:hover,
+		table.stripes-odd > tbody > tr:nth-of-type(odd)
+	) {
 	background: var(--table-stripe-bg-color);
-}
-.doc table.tableblock > tfoot {
-	background: linear-gradient(
-		180deg,
-		var(--table-stripe-bg-color) 0,
-		var(--default-bg-color)
-	);
 }
 .doc .halign-left {
 	text-align: left;
@@ -1261,8 +1241,7 @@ h6 {
 .doc .admonitionblock td.content {
 	font-size: 0.88889rem;
 }
-.doc .admonitionblock td.content > .title + *,
-.doc .admonitionblock td.content > :not(.title):first-child {
+.doc .admonitionblock td.content > :is(.title + *, :not(.title):first-child) {
 	margin-top: 0;
 }
 .doc .admonitionblock pre {
@@ -1296,25 +1275,31 @@ h6 {
 	border-radius: 0.45rem;
 	transform: translate(-0.5rem, -50%);
 }
+.doc
+	:is(
+		.admonitionblock.caution,
+		.admonitionblock.important,
+		.admonitionblock.note,
+		.admonitionblock.tip,
+		.admonitionblock.warning
+	)
+	.icon {
+	color: var(--admon-text-color);
+}
 .doc .admonitionblock.caution .icon {
 	background-color: var(--admon-caution-icon-color);
-	color: var(--admon-text-color);
 }
 .doc .admonitionblock.important .icon {
 	background-color: var(--admon-important-icon-color);
-	color: var(--admon-text-color);
 }
 .doc .admonitionblock.note .icon {
 	background-color: var(--admon-note-icon-color);
-	color: var(--admon-text-color);
 }
 .doc .admonitionblock.tip .icon {
 	background-color: var(--admon-tip-icon-color);
-	color: var(--admon-text-color);
 }
 .doc .admonitionblock.warning .icon {
 	background-color: var(--admon-warning-icon-color);
-	color: var(--admon-text-color);
 }
 .doc .admonitionblock .icon i {
 	display: inline-flex;
@@ -1326,26 +1311,18 @@ h6 {
 	position: relative;
 	top: 0.1125em;
 }
-.doc .imageblock,
-.doc .videoblock {
+.doc :is(.imageblock, .videoblock) {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
-.doc .imageblock.text-left,
-.doc .videoblock.text-left {
+.doc :is(.imageblock.text-left, .videoblock.text-left) {
 	align-items: flex-start;
 }
-.doc .imageblock.text-right,
-.doc .videoblock.text-right {
+.doc :is(.imageblock.text-right, .videoblock.text-right) {
 	align-items: flex-end;
 }
-.doc .image > img,
-.doc .image > object,
-.doc .image > svg,
-.doc .imageblock img,
-.doc .imageblock object,
-.doc .imageblock svg {
+.doc :is(.image, .imageblock) > :is(img, object, svg) {
 	display: inline-block;
 	height: auto;
 	max-width: 100%;
@@ -1365,8 +1342,7 @@ h6 {
 	font-size: 0.88889rem;
 	padding: 0.75em 1em;
 }
-.doc .quoteblock,
-.doc .verseblock {
+.doc :is(.quoteblock, .verseblock) {
 	background: var(--blockquote-bg-color);
 	border-left: 5px solid var(--blockquote-border-color);
 	color: var(--blockquote-text-color);
@@ -1396,26 +1372,26 @@ h6 {
 	font-family: inherit;
 	font-size: inherit;
 }
-.doc ol,
-.doc ul {
+.doc :is(ol, ul) {
 	margin: 0;
 	padding: 0 0 0 2rem;
 }
-.doc ol.none,
-.doc ol.unnumbered,
-.doc ol.unstyled,
-.doc ul.checklist,
-.doc ul.no-bullet,
-.doc ul.none,
-.doc ul.unstyled {
+.doc
+	:is(
+		ol.none,
+		ol.unnumbered,
+		ol.unstyled,
+		ul.checklist,
+		ul.no-bullet,
+		ul.none,
+		ul.unstyled
+	) {
 	list-style-type: none;
 }
-.doc ol.unnumbered,
-.doc ul.no-bullet {
+.doc :is(ol.unnumbered, ul.no-bullet) {
 	padding-left: 1.25rem;
 }
-.doc ol.unstyled,
-.doc ul.unstyled {
+.doc :is(ol.unstyled, ul.unstyled) {
 	padding-left: 0;
 }
 .doc ul.circle {
@@ -1427,9 +1403,7 @@ h6 {
 .doc ul.square {
 	list-style-type: square;
 }
-.doc ul.circle ul:not([class]),
-.doc ul.disc ul:not([class]),
-.doc ul.square ul:not([class]) {
+.doc :is(ul.circle, ul.disc, ul.square) ul:not([class]) {
 	list-style: inherit;
 }
 .doc ol.arabic {
@@ -1456,8 +1430,7 @@ h6 {
 .doc ul.checklist {
 	padding-left: 1.75rem;
 }
-.doc ul.checklist p > i.fa-check-square-o:first-child,
-.doc ul.checklist p > i.fa-square-o:first-child {
+.doc ul.checklist p > :is(i.fa-check-square-o:first-child, i.fa-square-o:first-child) {
 	display: inline-flex;
 	justify-content: center;
 	width: 1.25rem;
@@ -1469,37 +1442,33 @@ h6 {
 .doc ul.checklist i.fa-square-o::before {
 	content: "\274f";
 }
-.doc .dlist .dlist,
-.doc .dlist .olist,
-.doc .dlist .ulist,
-.doc .olist .dlist,
-.doc .olist .olist,
-.doc .olist .ulist,
-.doc .ulist .dlist,
-.doc .ulist .olist,
-.doc .ulist .ulist {
+.doc :is(.dlist, .olist, .ulist) :is(.dlist, .olist, .ulist) {
 	margin-top: 0;
 }
 .doc :is(.sect1, .sect2) > :is(.olist ol, .ulist ul) li {
 	margin-bottom: 0.6rem;
 }
-.doc .olist li + li,
-.doc .ulist li + li {
+.doc :is(.olist, .ulist) li + li {
 	margin-top: 0.2rem;
 }
-.doc .admonitionblock .listingblock,
-.doc .olist .listingblock,
-.doc .ulist .listingblock {
+.doc :is(.admonitionblock, .olist, .ulist).listingblock {
 	padding: 0;
 }
-.doc .admonitionblock .title,
-.doc .exampleblock .title,
-.doc .imageblock .title,
-.doc .listingblock .title,
-.doc .literalblock .title,
-.doc .openblock .title,
-.doc .tableblock caption,
-.doc .videoblock .title {
+.doc
+	:is(
+		:is(
+				.admonitionblock,
+				.exampleblock,
+				.imageblock,
+				.listingblock,
+				.literalblock,
+				.openblock,
+				.videoblock
+			)
+			.title
+			.tableblock
+			caption
+	) {
 	color: var(--title-text-color);
 	font-size: 0.88889rem;
 	font-style: italic;
@@ -1568,21 +1537,18 @@ h6 {
 .doc details.result > .content {
 	margin-left: -1rem;
 }
-.doc .exampleblock > .content,
-.doc details.result > .content {
+.doc :is(.exampleblock, details.result) > .content {
 	background: var(--default-bg-color);
 	border: 0.25rem solid var(--example-border-color);
 	border-radius: 0.5rem;
 	padding: 0.75rem;
 }
-.doc .exampleblock > .content::after,
-.doc details.result > .content::after {
+.doc :is(.exampleblock, details.result) > .content::after {
 	content: "";
 	display: table;
 	clear: both;
 }
-.doc .exampleblock > .content > :first-child,
-.doc details > .content > :first-child {
+.doc :is(.exampleblock, details) > .content > :first-child {
 	margin-top: 0;
 }
 .doc .sidebarblock {
@@ -1601,13 +1567,10 @@ h6 {
 .doc .sidebarblock > .content > :not(.title):first-child {
 	margin-top: 0;
 }
-.doc .listingblock.wrap pre,
-.doc .tableblock pre {
+.doc :is(.listingblock.wrap, .tableblock) pre {
 	white-space: pre-wrap;
 }
-.doc .listingblock pre:not(.highlight),
-.doc .literalblock pre,
-.doc pre.highlight code {
+.doc :is(.listingblock pre:not(.highlight), .literalblock pre, pre.highlight code) {
 	background: var(--code-parent-bg-color);
 	border: 1px solid var(--code-parent-border-color);
 	border-radius: 3px;
@@ -1710,13 +1673,11 @@ h6 {
 .doc .dlist dd:last-of-type {
 	margin-bottom: 0;
 }
-.doc td.hdlist1,
-.doc td.hdlist2 {
+.doc :is(td.hdlist1, td.hdlist2) {
 	padding: 0.5rem 0 0;
 	vertical-align: top;
 }
-.doc tr:first-child > .hdlist1,
-.doc tr:first-child > .hdlist2 {
+.doc tr:first-child > :is(.hdlist1, .hdlist2) {
 	padding-top: 0;
 }
 .doc td.hdlist1 {
@@ -1731,13 +1692,11 @@ h6 {
 	font-size: 0.88889rem;
 	margin: 0.25rem 0 -0.25rem;
 }
-.doc .colist > table > tbody > tr > :first-child,
-.doc .colist > table > tr > :first-child {
+.doc .colist > table > :is(tbody > tr, tr) > :first-child {
 	padding: 0.25em 0.5rem 0;
 	vertical-align: top;
 }
-.doc .colist > table > tbody > tr > :last-child,
-.doc .colist > table > tr > :last-child {
+.doc .colist > table > :is(tbody > tr, tr) > :last-child {
 	padding: 0.25rem 0;
 }
 .doc .conum[data-value] {
@@ -1789,8 +1748,7 @@ h6 {
 	white-space: nowrap;
 	color: var(--kbd-not-keyseq-text-color);
 }
-.doc .keyseq,
-.doc kbd {
+.doc :is(.keyseq, kbd) {
 	line-height: 1;
 }
 .doc .keyseq {
@@ -1805,8 +1763,7 @@ h6 {
 .doc .keyseq kbd:last-child {
 	margin-right: 0;
 }
-.doc .menuseq,
-.doc .path {
+.doc :is(.menuseq, .path) {
 	hyphens: none;
 }
 .doc .menuseq i.caret::before {
@@ -1923,8 +1880,7 @@ nav.pagination a {
 	line-height: 1.3;
 	position: relative;
 }
-nav.pagination a::after,
-nav.pagination a::before {
+nav.pagination :is(a::before, a::after) {
 	color: var(--page-version-missing-text-color);
 	font-size: 1.5em;
 	line-height: 0.75;
@@ -2027,10 +1983,6 @@ body {
 	cursor: not-allowed;
 	pointer-events: all !important;
 }
-#search-input:disabled::-webkit-input-placeholder,
-#search-input:disabled::-moz-placeholder,
-#search-input:disabled:-ms-input-placeholder,
-#search-input:disabled::-ms-input-placeholder,
 #search-input:disabled::placeholder {
 	color: var(--search-disabled-color);
 }
@@ -2090,8 +2042,7 @@ body {
 	height: 1.25rem;
 	display: block;
 }
-.navbar-item .icon img,
-.navbar-item .icon svg {
+.navbar-item .icon :is(img, svg) {
 	fill: currentColor;
 	width: inherit;
 	height: inherit;
@@ -2143,7 +2094,6 @@ body {
 .navbar-menu .navbar-item.search {
 	order: -1;
 }
-
 .navbar-end {
 	display: flex;
 	flex-direction: column;
@@ -2209,8 +2159,7 @@ body {
 	.navbar-menu:not(.is-active) {
 		display: none;
 	}
-	.navbar-menu .navbar-link:hover,
-	.navbar-menu a.navbar-item:hover {
+	.navbar-menu :is(.navbar-link:hover, a.navbar-item:hover) {
 		background: var(--table-bg-color);
 	}
 }
