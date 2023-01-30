@@ -14,6 +14,9 @@
 	--icon-path-home: url(../img/light-theme/home.svg);
 	--icon-path-menu: url(../img/light-theme/menu.svg);
 	--icon-path-octicons-16: url(../img/light-theme/octicons-16.svg);
+	--logo-path-github: url(../img/light-theme/github-mark.svg);
+
+	--default-transition: all 0.2s ease;
 
 	--default-bg-color: white;
 	--default-text-color: #080808;
@@ -133,6 +136,7 @@
 		--icon-path-home: url(../img/dark-theme/home.svg);
 		--icon-path-menu: url(../img/dark-theme/menu.svg);
 		--icon-path-octicons-16: url(../img/dark-theme/octicons-16.svg);
+		--logo-path-github: url(../img/dark-theme/github-mark.svg);
 
 		--default-bg-color: #080808;
 		--default-text-color: white;
@@ -277,7 +281,7 @@ a {
 	text-decoration: underline;
 	text-decoration-style: solid;
 	color: var(--link-text-color);
-	transition: all 0.2s ease;
+	transition: var(--default-transition);
 }
 a:visited {
 	color: var(--visited-link-text-color);
@@ -1894,7 +1898,21 @@ body {
 .navbar-brand .navbar-item {
 	color: var(--default-text-color);
 }
+.navbar-item .github-logo {
+	display: inline-block;
+	max-height: 1em;
+	text-align: center;
+	content: var(--logo-path-github);
+	margin-right: 5px;
+}
+.navbar-item .site-url {
+	padding-top: 0.15em;
+}
+.github-logo:hover {
+	filter: invert(100%);
+}
 .navbar-brand .navbar-item:first-child {
+	/* nav bar items should always be white*/
 	color: white;
 	align-self: center;
 	padding: 0;
@@ -1915,7 +1933,7 @@ body {
 	flex: auto;
 	justify-content: flex-end;
 }
-/* .nav slightly raises specificity */
+/* `.navbar` slightly raises specificity */
 .navbar #search-field {
 	margin-right: 0.5rem;
 }
@@ -1964,7 +1982,7 @@ body {
 	min-width: 0;
 }
 .navbar-burger span {
-	background-color: var(--default-bg-color);
+	background-color: #fff;
 	height: 1.5px;
 	width: 1rem;
 }
@@ -2009,11 +2027,20 @@ body {
 	height: inherit;
 }
 .navbar-link {
+	transition: var(--default-transition);
 	padding-right: 2.5em;
+	cursor: pointer;
 }
 .navbar-dropdown .navbar-item {
 	padding-left: 1.5rem;
 	padding-right: 1.5rem;
+}
+.navbar-dropdown a.navbar-item {
+	color: var(--default-text-color);
+	text-decoration: none;
+}
+.navbar-dropdown a.navbar-item:hover {
+	color: var(--link-hover-color);
 }
 .navbar-dropdown .navbar-item.has-label {
 	display: flex;
@@ -2059,13 +2086,33 @@ body {
 		align-items: center;
 		display: flex;
 	}
+	.navbar-item a.navbar-link {
+		color: var(--default-text-color);
+	}
+	.navbar-item > a.navbar-link {
+		text-decoration: none;
+	}
+	.navbar-item .navbar-dropdown a {
+		text-decoration: underline;
+		text-decoration-style: dotted;
+	}
+	.navbar-item .github-logo {
+		max-height: 1.2em;
+	}
+	.navbar-item .site-logo {
+		padding-top: 0.3em;
+	}
+	.navbar-item .navbar-dropdown a:hover {
+		text-decoration-style: solid;
+	}
 	.navbar-menu {
 		background: var(--default-bg-color);
-		box-shadow: 0 8px 16px rgba(10, 10, 10, 0.1);
+		box-shadow: 0 8px 16px rgba(40, 40, 40, 0.4);
 		max-height: calc(100vh - 3.5rem);
 		overflow-y: auto;
 		overscroll-behavior: none;
 		padding: 0.5rem 0;
+		border-bottom: 1px solid var(--table-border-color);
 	}
 	.navbar-menu:not(.is-active) {
 		display: none;
@@ -2121,9 +2168,9 @@ body {
 	}
 	.navbar-end .navbar-item.has-dropdown:hover .navbar-link,
 	.navbar-end .navbar-link:hover,
-	.navbar-end > a.navbar-item:hover {
-		background: var(--default-text-color);
-		color: var(--default-bg-color);
+	.navbar-end > a.navbar-item:not(.navbar-external-link):hover {
+		background: #fff;
+		color: #111;
 	}
 	.navbar-end .navbar-link::after {
 		border-color: currentColor;
@@ -2139,16 +2186,23 @@ body {
 		min-width: 100%;
 		position: absolute;
 	}
+	.has-dropdown.open-left .navbar-dropdown {
+		left: unset;
+		right: 0;
+	}
 	.navbar-dropdown .navbar-item {
-		padding: 0.5rem 3rem 0.5rem 1rem;
+		padding: 0;
+		margin: 0.5rem 3rem 0.5rem 1rem;
+		border-radius: 0;
 		white-space: nowrap;
+	}
+	.navbar-dropdown .navbar-item {
+		color: var(--default-text-color);
+		text-decoration: none;
 	}
 	.navbar-dropdown .navbar-item small {
 		position: relative;
 		right: -2rem;
-	}
-	.navbar-dropdown .navbar-item:last-child {
-		border-radius: inherit;
 	}
 	.navbar-dropdown.is-right {
 		left: auto;

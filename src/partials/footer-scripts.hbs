@@ -23,7 +23,6 @@
 	function set_up_footnotes() {
 		let footnoteBox;
 		let footnoteP;
-		const _toc = document.getElementById("toc");
 		const _isMobile = "ontouchstart" in document.documentElement;
 
 		// Apparently, sticking the tooltip in a child div of document.body, instead of in
@@ -140,7 +139,7 @@
 	set_up_footnotes()
 </script>
 {{!-- fixes bad font-awesome icons by asciidoctor; not currently in use --}}
-<script>
+{{!-- <script>
 	function fix_font_awesome() {
 		const elems = document.querySelectorAll('i.fa');
 		for (let i = 0, len = elems.length; i < len; i++) {
@@ -156,4 +155,4 @@
 			classes.add('fa-solid');
 		}
 	}
-</script>
+</script> --}}

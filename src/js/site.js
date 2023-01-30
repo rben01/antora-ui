@@ -190,7 +190,7 @@ function __get_copy_icon_path() {
 					!document.getElementById("toc") &&
 						(d.querySelector(".title-container .subtitle") ||
 							d.querySelector("h1.page ~ :not(.is-before-toc)")));
-			(console.log(e) || e) &&
+			e &&
 				(((m = document.createElement("aside")).className = "toc embedded"),
 				m.appendChild(f.cloneNode(!0)),
 				e.parentNode.insertBefore(m, e.nextSibling)),
