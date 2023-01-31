@@ -737,12 +737,12 @@ html.is-clipped--nav {
 	background-size: 41.5%;
 }
 .home-link {
-	display: none;
-	/* display: block; */
+	/* display: none; */
+	display: block;
 	background: var(--icon-path-home-o) no-repeat 50%;
 	height: 1.25rem;
 	width: 1.25rem;
-	margin: 0.625rem;
+	margin: 0.625rem 0.4rem 0.625rem 0.625rem;
 	transition: none;
 }
 .home-link.is-current,
@@ -764,11 +764,10 @@ html.is-clipped--nav {
 .breadcrumbs {
 	display: none;
 	flex: 1 1;
-	padding: 0 0.5rem 0 0.75rem;
+	padding: 0;
 	line-height: 1.35;
 	position: relative;
 	top: 0.2em;
-	margin-left: 0.875rem;
 }
 @media screen and (min-width: 1024px) {
 	.breadcrumbs {
