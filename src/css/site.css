@@ -173,10 +173,10 @@
 		--body-bg-color: #080808;
 		--body-text-color: rgb(243, 243, 243);
 		--title-text-color: rgb(226, 226, 226);
-		--link-text-color: #71c2f8;
-		--link-hover-color: #99d6ff;
-		--visited-link-text-color: rgb(189, 125, 241);
-		--visited-link-hover-color: rgb(212, 142, 248);
+		--link-text-color: #61c8ff;
+		--link-hover-color: rgb(140, 209, 255);
+		--visited-link-text-color: rgb(182, 122, 255);
+		--visited-link-hover-color: rgb(203, 161, 255);
 		--link-focus-text-color: #29c8d3;
 		--github-icon-color: #eee;
 		--header-text-color: #f8f8f8;
