@@ -1,18 +1,26 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   {{#if (not (eq page.title "Home"))}}
     <ul>
+      <li>&#47;</li> {{!-- slash character --}}
       {{#with page.componentVersion}}
         {{#if (and ./title (ne ./title @root.page.breadcrumbs.0.content))}}
-          <li><a href="{{{relativize ./url}}}">{{{./title}}}</a></li>
+          <li>
+            {{#if (not (eq @root.page.url ./url))}}
+              <a href="{{{relativize ./url}}}">{{{./title}}}</a>
+            {{else}}
+              {{{./title}}} {{/if}}
+          </li>
         {{/if}}
       {{/with}}
-      {{#each (or page.breadcrumbs page.title)}}
+      {{#each page.breadcrumbs}}
+        <li>&#47;</li>
         <li>
           {{~#if (and ./url (eq ./urlType 'internal'))~}}
-            {{~#if (not @last)}}
+            {{~#if (and (not @last) (not (eq @root.page.url ./url)))}}
               <a href="{{{relativize ./url}}}">{{{./content}}}</a>
               {{~else~}}
-              <span>{{{./content}}}</span> {{~/if~}}
+              <span>{{{./content}}}</span>
+              {{~/if~}}
               {{~else~}}
               {{{./content}}} {{~/if~}}
         </li>

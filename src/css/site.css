@@ -19,7 +19,7 @@
 	--icon-path-octicons-16: url(../img/light-theme/octicons-16.svg);
 	--logo-mask-path-github: url(../img/light-theme/github-mark.svg);
 
-	--default-transition: all 0.1s ease, visibility 0s, display 0s;
+	--default-transition: all 0.125s ease, visibility 0s, display 0s;
 
 	--default-bg-color: white;
 	--default-text-color: #080808;
@@ -780,6 +780,7 @@ a + .breadcrumbs {
 .breadcrumbs ul {
 	display: flex;
 	flex-wrap: wrap;
+	gap: 0.5rem;
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -788,13 +789,14 @@ a + .breadcrumbs {
 	display: inline;
 	margin: 0;
 }
-.breadcrumbs li::before {
+/* .breadcrumbs li::before {
 	content: "/";
-	margin: 0 0.5rem;
-}
-.breadcrumbs li:first-of-type::before {
+	display: inline-block;
+	margin: 0 0.3rem 0 0.5rem;
+} */
+/* .breadcrumbs li:first-of-type::before {
 	margin-left: 0;
-}
+} */
 .page-versions {
 	margin: 0 0.2rem 0 auto;
 	position: relative;
@@ -1038,8 +1040,7 @@ h6 {
 .doc :is(h1, h2, h3, h4, h5, h6):hover .anchor {
 	visibility: visible;
 }
-.doc dl,
-.doc p {
+.doc :is(dl, p) {
 	margin: 0;
 }
 .doc a {
@@ -1921,18 +1922,30 @@ body {
 .navbar-brand .navbar-item {
 	color: var(--default-text-color);
 }
-.navbar-dropdown .navbar-item .github-logo {
-	transition: var(--default-transition);
+.github-logo {
+	/* 0s transition because it's already synced to currentColor, which itself
+	transitions. If we had a nonzero transition here, it would lag behind the
+	currentColor transition */
+	transition: all 0s;
 	mask: var(--logo-mask-path-github) no-repeat center / contain;
 	-webkit-mask: var(--logo-mask-path-github) no-repeat center / contain;
-	background-color: var(--default-text-color);
 	display: inline-block;
 	width: 1em;
 	height: 1em;
-	margin-right: 5px;
+	margin-right: 0.4em;
+	color: currentColor;
+	background-color: currentColor;
 }
-.navbar-dropdown .navbar-item:hover .github-logo {
-	background-color: var(--link-hover-color);
+/* idk, specificity hack to get the logo to respect the *current* currentColor and not the one that
+exists on any old `a` */
+:is(a:hover, a:visited, a:visited:hover) .github-logo {
+	background-color: currentColor;
+}
+:is(.navbar-item, .doc) .github-logo {
+	position: relative;
+}
+.doc .github-logo {
+	top: 0.15em;
 }
 .navbar-item .site-url {
 	padding-top: 0.15em;
@@ -2135,10 +2148,6 @@ body {
 	.navbar-item .navbar-dropdown a {
 		text-decoration: underline;
 		text-decoration-style: dotted;
-	}
-	.navbar-item .github-logo {
-		position: relative;
-		top: 0.1em;
 	}
 	.navbar-item .site-logo {
 		padding-top: 0.3em;
