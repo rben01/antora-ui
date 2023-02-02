@@ -2151,7 +2151,7 @@ body {
 		text-decoration-style: dotted;
 	}
 	.navbar-item .site-logo {
-		padding-top: 0.3em;
+		top: 0.15em;
 	}
 	.navbar-item .navbar-dropdown a:hover {
 		text-decoration-style: solid;
