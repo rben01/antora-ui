@@ -24,11 +24,13 @@
 	--default-bg-color: white;
 	--default-text-color: #080808;
 	--doc-text-color: #111111;
-	--toolbar-bg-color: #f9f9f9;
+	--toolbar-bg-color: var(--navbar-header-bg-color);
 	--toolbar-text-color: #444444;
 	--toolbar-link-hover-color: #747474;
-	--top-bar-bg-color: #0a6bac;
-	--navbar-bg-color: #e5e5e5;
+	--toolbar-border-top-color: #e5e5e5;
+	--toolbar-border-top: 2px solid var(--toolbar-border-top-color);
+	--top-bar-bg-color: #0970c4;
+	--navbar-bg-color: #f1f1f1;
 	--navbar-header-bg-color: #fafafa;
 	--navbar-shadow-color-1: #dedede;
 	--navbar-shadow-color-2: #e1e1e1;
@@ -145,14 +147,15 @@
 		--default-bg-color: #080808;
 		--default-text-color: white;
 		--doc-text-color: #fcfcfc;
-		--toolbar-bg-color: #070707;
+		/* --toolbar-bg-color: #070707; */
 		--toolbar-text-color: #cccccc;
 		--toolbar-link-hover-color: #ececec;
+		--toolbar-border-top-color: #1a1a1a;
 		--top-bar-bg-color: #0967b4;
-		--navbar-bg-color: #1f1f1f;
+		--navbar-bg-color: #161616;
 		--navbar-header-bg-color: #0f0f0f;
-		--navbar-shadow-color-1: #2c2c2c;
-		--navbar-shadow-color-2: #242424;
+		--navbar-shadow-color-1: #0e0e0e;
+		--navbar-shadow-color-2: #000000;
 		--navbar-title-color: #c8c8c8;
 		--navbar-text-color: var(--default-text-color);
 		--navbar-text-color-faint: #b6b6b6;
@@ -163,9 +166,9 @@
 		--toc-text-color: #adadad;
 		--toc-title-color: #cfcfcf;
 		--toc-left-border-color: #1e1e1e;
-		--search-text-color: #333333;
+		/* --search-text-color: #333333;
 		--search-border-color: #4b4b4b;
-		--search-disabled-color: #5d5d5d;
+		--search-disabled-color: #5d5d5d; */
 
 		--mark-bg-color: rgb(224, 224, 0);
 		--mark-text-color: black;
@@ -570,8 +573,8 @@ html.is-clipped--nav {
 	justify-content: space-between;
 	line-height: 1;
 	height: var(--toolbar-height);
-	position: relative;
-	top: 0.1em;
+	border-top: var(--toolbar-border-top);
+	border-right: 1px solid var(--toolbar-border-top-color);
 }
 .nav-panel-explore:not(:first-child) .context {
 	cursor: pointer;
@@ -699,6 +702,7 @@ html.is-clipped--nav {
 	align-items: center;
 	background-color: var(--toolbar-bg-color);
 	box-shadow: 0 1px 0 var(--navbar-shadow-color-2);
+	border-top: var(--toolbar-border-top);
 	display: flex;
 	font-size: 0.83333rem;
 	height: var(--toolbar-height);
@@ -742,7 +746,7 @@ html.is-clipped--nav {
 	background: var(--icon-path-home-o) no-repeat 50%;
 	height: 1.25rem;
 	width: 1.25rem;
-	margin: 0.625rem 0.4rem 0.625rem 0.625rem;
+	margin: calc(0.625rem - 4px) 0.4rem 0.625rem 0.625rem;
 	transition: none;
 }
 .home-link.is-current,
@@ -765,9 +769,7 @@ html.is-clipped--nav {
 	display: none;
 	flex: 1 1;
 	padding: 0;
-	line-height: 1.35;
-	position: relative;
-	top: 0.2em;
+	line-height: 1;
 }
 @media screen and (min-width: 1024px) {
 	.breadcrumbs {
@@ -1922,6 +1924,15 @@ body {
 .navbar-brand .navbar-item {
 	color: var(--default-text-color);
 }
+.site-logo {
+	background-color: currentColor;
+}
+.navbar-item .site-logo {
+	color: unset;
+}
+.navbar-item .site-url {
+	padding-top: 0.15em;
+}
 .github-logo {
 	/* 0s transition because it's already synced to currentColor, which itself
 	transitions. If we had a nonzero transition here, it would lag behind the
@@ -1933,22 +1944,12 @@ body {
 	width: 1em;
 	height: 1em;
 	margin-right: 0.4em;
-	color: currentColor;
-	background-color: currentColor;
-}
-/* idk, specificity hack to get the logo to respect the *current* currentColor and not the one that
-exists on any old `a` */
-:is(a:hover, a:visited, a:visited:hover) .github-logo {
-	background-color: currentColor;
 }
 :is(.navbar-item, .doc) .github-logo {
 	position: relative;
 }
 .doc .github-logo {
 	top: 0.15em;
-}
-.navbar-item .site-url {
-	padding-top: 0.15em;
 }
 .navbar-brand .navbar-item:first-child {
 	/* nav bar items should always be white*/
@@ -2221,7 +2222,7 @@ exists on any old `a` */
 		position: absolute;
 		transform: rotate(-45deg);
 		width: 0.5em;
-		margin-top: -0.375em;
+		margin-top: -0.5em;
 		right: 1.125em;
 		top: 50%;
 	}
