@@ -18,7 +18,7 @@
 						i.classList.add("is-active"),
 						c.getBoundingClientRect()),
 					n = window.innerHeight - Math.round(t.top);
-				Math.round(t.height) !== n && (c.style.height = n + "px");
+				// Math.round(t.height) !== n && (c.style.height = n + "px");
 				e.addEventListener("click", u);
 			}),
 			i.addEventListener("click", v),

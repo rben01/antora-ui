@@ -29,7 +29,7 @@
 	--toolbar-link-hover-color: #747474;
 	--toolbar-border-top-color: #e5e5e5;
 	--toolbar-border-top: 2px solid var(--toolbar-border-top-color);
-	--top-bar-bg-color: #0970c4;
+	--header-bar-bg-colo: #0970c4;
 	--navbar-bg-color: #f1f1f1;
 	--navbar-header-bg-color: #fafafa;
 	--navbar-shadow-color-1: #dedede;
@@ -151,7 +151,7 @@
 		--toolbar-text-color: #cccccc;
 		--toolbar-link-hover-color: #ececec;
 		--toolbar-border-top-color: #1a1a1a;
-		--top-bar-bg-color: #0967b4;
+		--header-bar-bg-colo: #0967b4;
 		--navbar-bg-color: #161616;
 		--navbar-header-bg-color: #0f0f0f;
 		--navbar-shadow-color-1: #0e0e0e;
@@ -380,9 +380,20 @@ object[type="image/svg+xml"]:not([width]) {
 		display: flex;
 	}
 }
+
+main.article {
+	display: flex;
+	flex-direction: column;
+	min-height: calc(100vh - var(--header-bar-height));
+}
+
+main .content {
+	flex-grow: 1;
+}
+
 .nav-container {
 	position: fixed;
-	top: var(--header-bar-height);
+	top: calc(var(--header-bar-height) + var(--toolbar-height));
 	left: 0;
 	width: 100%;
 	font-size: 0.94444rem;
@@ -408,9 +419,6 @@ object[type="image/svg+xml"]:not([width]) {
 }
 .nav {
 	background: var(--navbar-bg-color);
-	position: relative;
-	top: var(--toolbar-height);
-	height: calc(100vh - 6rem);
 	z-index: 9;
 }
 @media screen and (min-width: 769px) {
@@ -432,8 +440,9 @@ object[type="image/svg+xml"]:not([width]) {
 .nav .panels {
 	display: flex;
 	flex-direction: column;
-	height: inherit;
 	z-index: inherit;
+	/* this is a hack to hide the 1px strip of pixels on iOS */
+	height: calc(100dvh - var(--header-bar-height) - var(--toolbar-height) + 1px);
 }
 html.is-clipped--nav {
 	overflow-y: hidden;
@@ -441,7 +450,7 @@ html.is-clipped--nav {
 .nav-panel-menu {
 	overflow-y: scroll;
 	overscroll-behavior: none;
-	height: calc(100% - var(--toolbar-height));
+	flex-grow: 1;
 }
 .nav-panel-menu:not(.is-active) .nav-menu {
 	opacity: 0.75;
@@ -551,12 +560,13 @@ html.is-clipped--nav {
 	background: var(--navbar-header-bg-color);
 	display: flex;
 	flex-direction: column;
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
 	z-index: inherit;
+}
+.nav-panel-explore:not(.is-active) {
+	padding-bottom: env(safe-area-inset-bottom);
+}
+.nav-panel-explore.is-active {
+	flex-grow: 1;
 }
 .nav-panel-explore:not(:first-child) {
 	top: auto;
@@ -859,7 +869,7 @@ a + .breadcrumbs {
 .toc.sidebar .toc-menu {
 	margin-right: 0.75rem;
 	position: sticky;
-	top: 6rem;
+	top: calc(var(--header-bar-height) + var(--toolbar-height));
 }
 .toc .toc-menu h3 {
 	color: var(--toc-title-color);
@@ -1791,6 +1801,7 @@ h6 {
 }
 .ui-icon.nav-menu-icon {
 	mask: var(--icon-path-menu) no-repeat center / contain;
+	-webkit-mask: var(--icon-path-menu) no-repeat center / contain;
 	position: relative;
 	top: 0.1em;
 }
@@ -1904,10 +1915,13 @@ body {
 	padding-top: var(--header-bar-height);
 }
 .navbar {
-	background: var(--top-bar-bg-color);
+	background: var(--header-bar-bg-colo);
 	color: var(--default-text-color);
 	font-size: 0.88889rem;
-	height: var(--header-bar-height);
+	/* this is a hack to hide the 1px strip of pixels on iOS */
+	height: calc(2px + var(--header-bar-height));
+	margin-top: -2px;
+	padding-top: 2px;
 	position: fixed;
 	top: 0;
 	width: 100%;
@@ -2063,7 +2077,6 @@ body {
 .navbar-link {
 	transition: var(--default-transition);
 	padding-right: 2.5em;
-	cursor: pointer;
 }
 .navbar-dropdown .navbar-item {
 	padding-left: 1.5rem;
@@ -2173,6 +2186,9 @@ body {
 	}
 }
 @media screen and (min-width: 1024px) {
+	.nav .panels {
+		min-height: calc(100dvh - var(--header-bar-height));
+	}
 	.desktop-instructions {
 		display: block;
 	}
@@ -2204,6 +2220,9 @@ body {
 	.navbar-link {
 		position: relative;
 		flex: none;
+	}
+	.has-dropdown {
+		cursor: default;
 	}
 	.navbar-item:not(.has-dropdown),
 	.navbar-link {
@@ -2279,6 +2298,7 @@ footer.footer {
 	font-size: 0.83333rem;
 	line-height: 1.6;
 	padding: 1.5rem;
+	padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
 }
 .footer p {
 	margin: 0.5rem 0;
