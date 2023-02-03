@@ -565,7 +565,7 @@ html.is-clipped--nav {
 .nav-panel-explore:not(.is-active) {
 	padding-bottom: env(safe-area-inset-bottom);
 }
-.nav-panel-explore.is-active {
+.panels .nav-panel-explore.is-active:first-child {
 	flex-grow: 1;
 }
 .nav-panel-explore:not(:first-child) {
