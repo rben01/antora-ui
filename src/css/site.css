@@ -146,8 +146,8 @@
 		--header-bar-bg-colo: #0967b4;
 		--navbar-bg-color: #161616;
 		--navbar-header-bg-color: #0f0f0f;
-		--navbar-shadow-color-1: #0e0e0e;
-		--navbar-shadow-color-2: #000000;
+		--navbar-shadow-color-1: #1a1a1a;
+		--navbar-shadow-color-2: #272727;
 		--navbar-title-color: #c8c8c8;
 		--navbar-text-color: var(--default-text-color);
 		--navbar-text-color-faint: #b6b6b6;
@@ -716,8 +716,8 @@ html.is-clipped--nav {
 	color: var(--toolbar-text-color);
 	align-items: center;
 	background-color: var(--toolbar-bg-color);
-	box-shadow: 0 1px 0 var(--navbar-shadow-color-2);
 	border-top: var(--toolbar-border-top);
+	border-bottom: 1px solid var(--toolbar-border-top-color);
 	display: flex;
 	font-size: 0.83333rem;
 	height: var(--toolbar-height);
@@ -1077,6 +1077,21 @@ h6 {
 .doc :is(dl, p) {
 	margin: 0;
 }
+/* todo: enable this when browsers add support for color-mix */
+/* @supports (color: color-mix(in lab, currentColor 50%, var(--default-bg-color))) {
+	.doc :is(a, a:visited) {
+		text-decoration-style: solid;
+		text-decoration-color: color-mix(
+			in lab,
+			currentColor 50%,
+			var(--default-bg-color)
+		);
+	}
+	.doc :is(a, a:visited):hover {
+		text-decoration-color: currentColor;
+	}
+} */
+
 .doc a {
 	color: var(--link-text-color);
 	text-decoration-style: dotted;
