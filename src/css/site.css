@@ -457,15 +457,21 @@ html.is-clipped--nav {
 .nav-panel-menu:not(.is-active) .nav-menu {
 	opacity: 0.75;
 }
-.nav-panel-menu:not(.is-active)::after {
+.nav-panel-menu::after {
 	content: "";
-	background: rgba(0, 0, 0, 0.5);
+	background: #000;
 	display: block;
 	position: absolute;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
+	opacity: 0;
+	transition: opacity 0.2s ease; /* slightly longer than --default-transition-time */
+	pointer-events: none;
+}
+.nav-panel-menu:not(.is-active)::after {
+	opacity: 0.5;
 }
 .nav-panel-menu .is-current-page {
 	/* font-weight: var(--bold-font-weight); */
@@ -562,6 +568,11 @@ html.is-clipped--nav {
 	display: flex;
 	flex-direction: column;
 	z-index: inherit;
+	transform: translateY(0);
+	transition: transform var(--default-transition-time) ease;
+}
+.nav-panel-explore:not(.is-active) {
+	transform: translateY(calc(100% - var(--toolbar-height)));
 }
 .nav-panel-explore:not(.is-active) {
 	padding-bottom: env(safe-area-inset-bottom);
@@ -606,6 +617,7 @@ html.is-clipped--nav {
 }
 .nav-panel-explore .context .nav-explore-expander .svg-icon {
 	transform: scaleY(-1);
+	transition: var(--default-transition);
 	position: relative;
 	top: -0.1em;
 	margin-left: 0.4rem;
@@ -622,7 +634,6 @@ html.is-clipped--nav {
 .nav-panel-explore.is-active .context .nav-explore-expander .svg-icon {
 	transform: none;
 }
-
 .nav-panel-explore .components {
 	line-height: 1.6;
 	flex-grow: 1;
@@ -637,9 +648,6 @@ html.is-clipped--nav {
 }
 .nav-panel-explore .components a:hover {
 	color: var(--toolbar-link-hover-color);
-}
-.nav-panel-explore:not(.is-active) .components {
-	display: none;
 }
 .nav-panel-explore .component {
 	display: block;
