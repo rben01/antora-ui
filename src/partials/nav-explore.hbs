@@ -12,17 +12,16 @@
   {{/if}}
   <ul class="components">
     {{#each site.components}}
-      <li class="component{{#if (eq this @root.page.component)}} is-current{{/if}}">
-        <a class="title" href="{{{relativize ./url}}}">{{{./title}}}</a>
-        {{!-- <ul class="versions">
-          {{#each ./versions}}
-            <li class="version
-          {{~#if (and (eq .. @root.page.component) (eq this @root.page.componentVersion))}} is-current{{/if~}}
-          {{~#if (eq this ../latest)}} is-latest{{/if}}">
-              <a href="{{{relativize ./url}}}">{{./displayVersion}}</a>
-            </li>
-          {{/each}}
-        </ul> --}}
+      <li
+        class="component{{#if (eq this @root.page.component)}} is-current{{/if}}{{#if (eq ./url @root.page.url)}} is-current-page{{/if}}">
+        {{#if (eq ./url @root.page.url)}}
+          <span class="title">{{{./title}}}</span>
+        {{else}}
+          <a class="title" href="{{{relativize ./url}}}">{{{./title}}}</a>
+        {{/if}}
+        {{#if (eq this @root.page.component)}}
+          {{> nav-tree navigation=@root.page.navigation}}
+        {{/if}}
       </li>
     {{/each}}
   </ul>

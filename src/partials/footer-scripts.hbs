@@ -1,20 +1,20 @@
-<script id="site-script" src="{{{uiRootPath}}}/js/site.js" data-ui-root-path="{{{uiRootPath}}}"></script>
-<script async src="{{{uiRootPath}}}/js/vendor/highlight.js"></script>
-{{!-- add `.is-current-page` to top-level titles in nav sidebar --}}
+{{!-- add `.is-current-page` to top-level titles in nav sidebar. this affects the UI so
+it's high priority (should come before other scripts) --}}
 <script>
-	function add_is_current_page() {
-		const currentPageLinks = document.querySelectorAll(`.nav-container a`);
-		for (let i = 0, len = currentPageLinks.length; i < len; i++) {
-			const elem = currentPageLinks[i];
-			if (elem.href !== window.location.href) {
-				continue;
+	function add_is_current_path() {
+		let elem = document.querySelector(`.nav-container .is-current-page > .final-depth`);
+		if (!elem) { return; }
+		while (!elem.classList.contains("nav-panel-explore")) {
+			if (elem.tagName === "LI") {
+				elem.classList.add("is-current-path");
 			}
-			const addClassToElem = elem.parentNode.childElementCount === 1 ? elem.parentNode : elem;
-			addClassToElem.classList.add("is-current-page");
+			elem = elem.parentNode;
 		}
 	}
-	add_is_current_page()
+	add_is_current_path()
 </script>
+<script id="site-script" src="{{{uiRootPath}}}/js/site.js" data-ui-root-path="{{{uiRootPath}}}"></script>
+<script async src="{{{uiRootPath}}}/js/vendor/highlight.js"></script>
 {{#if env.SITE_SEARCH_PROVIDER}}
 	{{> search-scripts}}
 {{/if}}

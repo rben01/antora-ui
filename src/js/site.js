@@ -22,7 +22,7 @@
 				e.addEventListener("click", u);
 			}),
 			i.addEventListener("click", v),
-			i.querySelector("[data-panel=menu]"));
+			i.querySelector("[data-panel=explore]"));
 	function t() {
 		var e,
 			t,
@@ -64,11 +64,16 @@
 			p(l, e));
 	}
 	function d(e) {
-		for (var t, n = e.parentNode; !(t = n.classList).contains("nav-menu"); )
+		for (
+			var t, n = e.parentNode;
+			!(t = n.classList).contains("nav-panel-explore");
+
+		) {
 			"LI" === n.tagName &&
 				t.contains("nav-item") &&
 				t.add("is-active", "is-current-path"),
 				(n = n.parentNode);
+		}
 		e.classList.add("is-active");
 	}
 	function n() {
@@ -105,10 +110,10 @@
 		return [].slice.call(e.querySelectorAll(t));
 	}
 	l &&
-		((e = i.querySelector("[data-panel=explore]")),
-		(o = l.querySelector(".is-current-page")),
-		(r = o) ? (d(o), p(l, o.querySelector(".nav-link"))) : (l.scrollTop = 0),
-		h(l, ".nav-item-toggle").forEach(function (e) {
+		((e = l),
+		(o = l.querySelector(":not(.component).is-current-page")),
+		(r = o) ? (d(o), p(l, o.querySelector(".nav-text"))) : (l.scrollTop = 0),
+		h(l, ".nav-item-expander").forEach(function (e) {
 			var t = e.parentElement,
 				e =
 					(e.addEventListener("click", n.bind(t)),

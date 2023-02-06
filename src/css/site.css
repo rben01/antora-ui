@@ -285,6 +285,9 @@ body {
 	/* font-weight: var(--default-font-weight); */
 	font-variation-settings: "wght" var(--default-font-weight);
 }
+.hidden {
+	visibility: hidden;
+}
 a {
 	text-decoration: underline;
 	text-decoration-style: dotted;
@@ -449,17 +452,22 @@ main .content {
 html.is-clipped--nav {
 	overflow-y: hidden;
 }
-.nav-panel-menu {
+:is(.nav-panel-menu, .nav-panel-explore) {
 	overflow-y: scroll;
 	overscroll-behavior: none;
 	flex-grow: 1;
 }
-.nav-panel-menu:not(.is-active) .nav-menu {
+:is(.nav-panel-menu, .nav-panel-explore):not(.is-active) .nav-menu {
 	opacity: 0.75;
 }
-.nav-panel-menu .is-current-page {
+:is(.nav-panel-menu, .nav-panel-explore)
+	:is(.component.is-current > .title, .is-current-path > .nav-item-expander) {
 	/* font-weight: var(--bold-font-weight); */
 	font-variation-settings: "wght" var(--bold-font-weight);
+}
+.component.is-current-page > .title,
+.final-depth > .nav-text {
+	font-style: italic;
 }
 .nav-menu {
 	min-height: 100%;
@@ -493,14 +501,29 @@ html.is-clipped--nav {
 }
 .nav-list {
 	list-style: none;
-	margin: 0 0 0 0.75rem;
+	margin: 0 0 0 1.15rem;
 	padding: 0;
+}
+.nav-panel-explore .component > .nav-list {
+	margin-left: 0.75rem;
 }
 .nav-menu > .nav-list + .nav-list {
 	margin-top: 0.5rem;
 }
 .nav-item {
-	margin-top: 0.5em;
+	margin-top: 0.1em;
+	margin-bottom: 0.7em;
+}
+.nav-item-expander {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.nav-item-expander:not(.final-depth) {
+	width: min-content;
+}
+.nav-item-expander.clickable {
+	cursor: pointer;
 }
 .nav-item-toggle ~ .nav-list {
 	padding-bottom: 0.125rem;
@@ -518,11 +541,12 @@ html.is-clipped--nav {
 	outline: none;
 	line-height: inherit;
 	padding: 0.2rem;
-	position: absolute;
+	padding-left: 0;
+	position: relative;
+	top: -0.225em;
 	height: 1.35em;
-	width: 1.35em;
-	margin-top: -0.05em;
-	margin-left: -1.35em;
+	width: 1em;
+	transition: transform 0.08s ease; /* a tad shorter than the default transition */
 }
 .nav-item-toggle .svg-icon > use {
 	fill: var(--icon-caret-color);
@@ -530,8 +554,8 @@ html.is-clipped--nav {
 .nav-item > .nav-item-toggle {
 	transition: var(--default-transition);
 }
-.nav-item.is-active > .nav-item-toggle {
-	transform: translateY(-0.125em) rotate(90deg);
+:is(.component, .nav-item).is-active > .nav-item-expander > .nav-item-toggle {
+	transform: translateY(0.2em) rotate(90deg);
 }
 .nav-menu .nav-text {
 	position: relative;
@@ -554,6 +578,9 @@ html.is-clipped--nav {
 	z-index: inherit;
 	transform: translateY(0);
 	transition: transform var(--default-transition-time) ease;
+}
+.nav-container .nav-item-expander :is(.nav-link, .nav-text) {
+	line-height: 1.4;
 }
 .nav-panel-explore:not(.is-active) {
 	transform: translateY(calc(100% - var(--toolbar-height)));
@@ -623,12 +650,18 @@ html.is-clipped--nav {
 	flex-grow: 1;
 	box-shadow: inset 0 1px 5px var(--navbar-shadow-color-2);
 	background: var(--navbar-bg-color);
-	padding: 0.5rem 0.75rem 0;
+	padding: 0.5rem 1rem 0;
 	margin: 0;
 	overflow-y: scroll;
 	overscroll-behavior: none;
 	max-height: 100%;
 	display: block;
+}
+.nav-panel-explore .component.is-current :has(.nav-list) {
+	margin-bottom: 0.4rem;
+}
+.nav-panel-explore > .components > .component .nav-item-expander {
+	margin-left: -1em;
 }
 .nav-panel-explore .components a:hover {
 	color: var(--toolbar-link-hover-color);
@@ -637,7 +670,7 @@ html.is-clipped--nav {
 	display: block;
 }
 .nav-panel-explore .component + .component {
-	margin-top: 0.5rem;
+	margin-top: 0.1rem;
 }
 .nav-panel-explore .component:last-child {
 	margin-bottom: 0.75rem;
@@ -645,10 +678,6 @@ html.is-clipped--nav {
 .nav-panel-explore .component .title {
 	/* font-weight: var(); */
 	font-variation-settings: "wght" var(--default-font-weight);
-}
-.nav-panel-explore .component.is-current .title {
-	/* font-weight: var(); */
-	font-variation-settings: "wght" var(--bold-font-weight);
 }
 .nav-panel-explore .nav-explore-expanders {
 	display: flex;
@@ -1824,10 +1853,11 @@ h6 {
 	background-color: var(--default-text-color);
 }
 .ui-icon.nav-menu-icon {
-	mask: var(--icon-path-menu) no-repeat center / contain;
-	-webkit-mask: var(--icon-path-menu) no-repeat center / contain;
+	background: var(--default-text-color);
+	clip-path: url(#icon-menu-clippath);
 	position: relative;
-	top: 0.1em;
+	top: 0.15em;
+	margin-right: 0.14em;
 }
 .desktop-instructions {
 	display: none;

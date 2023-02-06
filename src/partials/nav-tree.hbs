@@ -1,25 +1,22 @@
 {{#if navigation.length}}
   <ul class="nav-list">
     {{#each navigation}}
-      <li class="nav-item is-active {{#if (eq ./url @root.page.url)}} is-current-page{{/if}}"
+      <li class="nav-item is-active{{#if (eq ./url @root.page.url)}} is-current-page{{/if}}"
         data-depth="{{or ../level 0}}">
-        {{#if ./content}}
-          {{#if ./items.length}}
-            <button class="nav-item-toggle">
-              <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" viewBox="0 0 1 1">
-                <title>Disclosure caret</title>
-                <use href="#icon-caret"></use>
-              </svg>
-            </button>
+        <span
+          class="nav-item-expander{{#if (and @root.page.navigation (not (eq ./url @root.page.url)))}} clickable{{/if}}{{#if ./url}} final-depth{{/if}}">
+          {{#if ./content}}
+            {{#if ./items.length}}
+              {{> nav-item-toggle not-hidden=1}}
+            {{/if}}
+            {{#if (and ./url (not (eq ./url @root.page.url)))}}
+              <a class="nav-link"
+                href="{{~#if (eq ./urlType 'internal')}}{{{relativize ./url}}}{{~else}}{{{./url}}}{{~/if}}">{{{./content}}}</a>
+            {{else}}
+              <span class="nav-text">{{{./content}}}</span>
+            {{/if}}
           {{/if}}
-          {{#if ./url}}
-            <a class="nav-link" href="
-      {{~#if (eq ./urlType 'internal')}}{{{relativize ./url}}}
-      {{~else}}{{{./url}}}{{~/if}}">{{{./content}}}</a>
-          {{else}}
-            <span class="nav-text">{{{./content}}}</span>
-          {{/if}}
-        {{/if}}
+        </span>
         {{> nav-tree navigation=./items level=(increment ../level)}}
       </li>
     {{/each}}
