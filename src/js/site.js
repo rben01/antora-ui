@@ -324,7 +324,7 @@ function __get_copy_icon_path() {
 		l = / +$/gm,
 		e = (document.getElementById("site-script") || { dataset: {} }).dataset,
 		d = null == e.uiRootPath ? "." : e.uiRootPath,
-		r = e.svgAs,
+		r = "svg",
 		p = window.navigator.clipboard;
 	[].slice
 		.call(document.querySelectorAll(".doc pre.highlight, .doc .literalblock pre"))
@@ -360,7 +360,7 @@ function __get_copy_icon_path() {
 						  (c = document.createElementNS(
 								"http://www.w3.org/2000/svg",
 								"use",
-						  )).setAttribute("href", d + __get_copy_icon_path()),
+						  )).setAttribute("href", "#icon-clipboard"),
 						  a.appendChild(c),
 						  n.appendChild(a))
 						: (((c = document.createElement("img")).src =
