@@ -1861,7 +1861,7 @@ h6 {
 .footnote-box {
 	position: absolute;
 	block-size: fit-content;
-	background-color: var(--table-head-foot-bg-color);
+	background-color: var(--toolbar-bg-color);
 	border: 1px solid var(--example-text-color);
 	border-radius: 2px;
 	box-shadow: 0 0 10px 1px var(--default-bg-color);
