@@ -10,16 +10,9 @@
 	--header-bar-height: 3rem;
 	--toolbar-height: 2.5rem;
 
-	--icon-path-back: url(../img/light-theme/back.svg);
-	--icon-path-caret: url(../img/light-theme/caret.svg);
-	--icon-path-chevron: url(../img/light-theme/chevron.svg);
-	--icon-path-home-o: url(../img/light-theme/home-o.svg);
-	--icon-path-home: url(../img/light-theme/home.svg);
-	--icon-path-menu: url(../img/light-theme/menu.svg);
-	--icon-path-octicons-16: url(../img/light-theme/octicons-16.svg);
-	--logo-mask-path-github: url(../img/light-theme/github-mark.svg);
-
-	--default-transition: all 0.125s ease, visibility 0s, display 0s;
+	--default-transition-time: 0.125s;
+	--default-transition: all var(--default-transition-time) ease, visibility 0s,
+		display 0s;
 
 	--default-bg-color: white;
 	--default-text-color: #080808;
@@ -47,6 +40,7 @@
 	--search-text-color: #333333;
 	--search-border-color: #dbdbdb;
 	--search-disabled-color: #4c4c4c;
+	--icon-caret-color: var(--toolbar-text-color);
 
 	--mark-bg-color: #ff0;
 	--mark-text-color: black;
@@ -136,8 +130,6 @@
 
 @media screen and (prefers-color-scheme: dark) {
 	:root {
-		--icon-path-back: url(../img/dark-theme/back.svg);
-		--icon-path-caret: url(../img/dark-theme/caret.svg);
 		--icon-path-chevron: url(../img/dark-theme/chevron.svg);
 		--icon-path-home-o: url(../img/dark-theme/home-o.svg);
 		--icon-path-home: url(../img/dark-theme/home.svg);
@@ -169,6 +161,7 @@
 		/* --search-text-color: #333333;
 		--search-border-color: #4b4b4b;
 		--search-disabled-color: #5d5d5d; */
+		/* --icon-caret-color: #4d4d4d; */
 
 		--mark-bg-color: rgb(224, 224, 0);
 		--mark-text-color: black;
@@ -386,9 +379,18 @@ main.article {
 	flex-direction: column;
 	min-height: calc(100vh - var(--header-bar-height));
 }
-
 main .content {
 	flex-grow: 1;
+}
+#icon-mask-container {
+	width: 0;
+	height: 0;
+	position: absolute;
+	pointer-events: none;
+}
+.svg-icon {
+	width: 100%;
+	height: 100%;
 }
 
 .nav-container {
@@ -521,31 +523,30 @@ html.is-clipped--nav {
 	display: none;
 }
 .nav-item-toggle {
-	background: transparent var(--icon-path-caret) no-repeat 50%/50%;
+	background: none;
 	border: none;
 	outline: none;
 	line-height: inherit;
-	padding: 0;
+	padding: 0.2rem;
 	position: absolute;
 	height: 1.35em;
 	width: 1.35em;
 	margin-top: -0.05em;
 	margin-left: -1.35em;
 }
+.nav-item-toggle .svg-icon > use {
+	fill: var(--icon-caret-color);
+}
+.nav-item > .nav-item-toggle {
+	transition: var(--default-transition);
+}
 .nav-item.is-active > .nav-item-toggle {
-	transform: rotate(90deg);
+	transform: translateY(-0.125em) rotate(90deg);
 }
 .nav-menu .nav-text {
 	position: relative;
 	top: 0.12em;
 }
-/**
-.is-current-page > .nav-link,
-.is-current-page > .nav-text {
-	font-weight: var(--default-font-weight);
-	font-variation-settings: "wght" var(--default-font-weight);
-}
-*/
 .nav .nav-list a {
 	text-decoration: underline;
 	text-decoration-style: dotted;
@@ -589,31 +590,35 @@ html.is-clipped--nav {
 .nav-panel-explore:not(:first-child) .context {
 	cursor: pointer;
 }
-.nav-panel-explore .context .version {
+.nav-panel-explore .context .nav-explore-expander {
 	display: flex;
 	align-items: inherit;
 }
-.nav-panel-explore:first-child .context .version {
+.nav-panel-explore:first-child .context .nav-explore-expander {
 	visibility: hidden;
 }
-.nav-panel-explore .context .version::before {
+.nav-panel-explore .context .nav-explore-expander::before {
 	content: "Expand";
 }
-.nav-panel-explore.is-active .context .version::before {
+.nav-panel-explore.is-active .context .nav-explore-expander::before {
 	content: "Collapse";
 }
-.nav-panel-explore .context .version::after {
-	content: "";
-	background: var(--icon-path-chevron) no-repeat 100% / auto 100%;
+.nav-panel-explore .context .nav-explore-expander .svg-icon {
 	transform: scaleY(-1);
+	position: relative;
+	top: -0.1em;
+	margin-left: 0.4rem;
 	justify-self: center;
 	align-self: center;
 	text-align: center;
 	vertical-align: middle;
-	width: 1.25em;
-	height: 0.75em;
+	width: 0.9em;
+	height: 0.9em;
 }
-.nav-panel-explore.is-active .context .version::after {
+.nav-panel-explore .context .nav-explore-expander .svg-icon > use {
+	fill: var(--navbar-text-color-faint);
+}
+.nav-panel-explore.is-active .context .nav-explore-expander .svg-icon {
 	transform: none;
 }
 
@@ -652,7 +657,7 @@ html.is-clipped--nav {
 	/* font-weight: var(); */
 	font-variation-settings: "wght" var(--bold-font-weight);
 }
-.nav-panel-explore .versions {
+.nav-panel-explore .nav-explore-expanders {
 	display: flex;
 	flex-wrap: wrap;
 	padding-left: 0;
@@ -661,10 +666,10 @@ html.is-clipped--nav {
 	list-style: none;
 }
 
-.nav-panel-explore .component .version {
+.nav-panel-explore .component .nav-explore-expander {
 	margin: 0.375rem 0.375rem 0 0;
 }
-.nav-panel-explore .component .version a {
+.nav-panel-explore .component .nav-explore-expander a {
 	border: 1px solid var(--navbar-item-outline-color);
 	border-radius: 0.25rem;
 	opacity: 0.75;
@@ -731,15 +736,16 @@ html.is-clipped--nav {
 	text-decoration-style: solid;
 }
 .nav-toggle {
-	background: var(--icon-path-menu) no-repeat 50% 47.5%;
-	background-size: 49%;
 	border: none;
 	outline: none;
+	background: none;
 	line-height: inherit;
-	padding: 0;
 	height: var(--toolbar-height);
 	width: var(--toolbar-height);
 	margin-right: -0.25rem;
+	padding: 0.65rem;
+	position: relative;
+	top: -1px;
 }
 @media screen and (min-width: 1024px) {
 	.nav-toggle {
@@ -747,21 +753,37 @@ html.is-clipped--nav {
 	}
 }
 .nav-toggle.is-active {
-	background-image: var(--icon-path-back);
+	background: unset;
 	background-size: 41.5%;
 }
+.nav-toggle .svg-icon > use:is(.icon-menu, .icon-back) {
+	fill: var(--default-text-color);
+}
+.nav-toggle.is-active .svg-icon > use.icon-menu {
+	display: none;
+}
+.nav-toggle:not(.is-active) .svg-icon > use.icon-back {
+	display: none;
+}
 .home-link {
-	/* display: none; */
-	display: block;
-	background: var(--icon-path-home-o) no-repeat 50%;
+	position: relative;
+	display: inline-block;
 	height: 1.25rem;
 	width: 1.25rem;
 	margin: calc(0.625rem - 4px) 0.4rem 0.625rem 0.625rem;
+	/* unset transition in order to make the hover transition on the icon itself work */
 	transition: none;
 }
-.home-link.is-current,
-.home-link:hover {
-	background-image: var(--icon-path-home);
+.home-link .svg-icon > use.icon-home {
+	fill: var(--default-text-color);
+	stroke: none;
+}
+.home-link .svg-icon > use.icon-home-filled {
+	opacity: 0;
+	transition: var(--default-transition);
+}
+.home-link:is(.is-current, :hover) .svg-icon > use.icon-home-filled {
+	opacity: 1;
 }
 .edit-this-page {
 	display: none;
@@ -819,7 +841,7 @@ a + .breadcrumbs {
 		margin-right: 0.7rem;
 	}
 }
-.page-versions .version-menu-toggle {
+.page-versions .nav-explore-expander-menu-toggle {
 	color: inherit;
 	background: var(--icon-path-chevron) no-repeat;
 	background-position: right 0.5rem top 50%;
@@ -831,7 +853,7 @@ a + .breadcrumbs {
 	position: relative;
 	z-index: 3;
 }
-.page-versions .version-menu {
+.page-versions .nav-explore-expander-menu {
 	display: flex;
 	min-width: 100%;
 	flex-direction: column;
@@ -848,17 +870,17 @@ a + .breadcrumbs {
 	right: 0;
 	white-space: nowrap;
 }
-.page-versions:not(.is-active) .version-menu {
+.page-versions:not(.is-active) .nav-explore-expander-menu {
 	display: none;
 }
-.page-versions .version {
+.page-versions .nav-explore-expander {
 	display: block;
 	padding-top: 0.5rem;
 }
-.page-versions .version.is-current {
+.page-versions .nav-explore-expander.is-current {
 	display: none;
 }
-.page-versions .version.is-missing {
+.page-versions .nav-explore-expander.is-missing {
 	color: var(--page-version-missing-text-color);
 	font-style: italic;
 	text-decoration: none;
@@ -1948,12 +1970,11 @@ body {
 	padding-top: 0.15em;
 }
 .github-logo {
-	/* 0s transition because it's already synced to currentColor, which itself
-	transitions. If we had a nonzero transition here, it would lag behind the
-	currentColor transition */
-	transition: all 0s;
-	mask: var(--logo-mask-path-github) no-repeat center / contain;
-	-webkit-mask: var(--logo-mask-path-github) no-repeat center / contain;
+	/* no transition because it's already synced to currentColor, which itself
+	transitions.
+	If we had a transition here, it would lag behind the currentColor transition */
+	transition: none;
+	clip-path: url(#icon-github);
 	display: inline-block;
 	width: 1em;
 	height: 1em;

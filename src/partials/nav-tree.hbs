@@ -4,7 +4,11 @@
       <li class="nav-item{{#if (eq ./url @root.page.url)}} is-current-page{{/if}}" data-depth="{{or ../level 0}}">
         {{#if ./content}}
           {{#if ./items.length}}
-            <button class="nav-item-toggle"></button>
+            <button class="nav-item-toggle">
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" viewBox="0 0 1 1">
+                <use href="#icon-caret"></use>
+              </svg>
+            </button>
           {{/if}}
           {{#if ./url}}
             <a class="nav-link" href="
