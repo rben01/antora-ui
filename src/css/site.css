@@ -142,7 +142,7 @@
 		/* --toolbar-bg-color: #070707; */
 		--toolbar-text-color: #cccccc;
 		--toolbar-link-hover-color: #ececec;
-		--toolbar-border-top-color: #1a1a1a;
+		--toolbar-border-top-color: #202020;
 		--header-bar-bg-colo: #0967b4;
 		--navbar-bg-color: #161616;
 		--navbar-header-bg-color: #0f0f0f;
@@ -586,6 +586,7 @@ html.is-clipped--nav {
 	height: var(--toolbar-height);
 	border-top: var(--toolbar-border-top);
 	border-right: 1px solid var(--toolbar-border-top-color);
+	border-bottom: 1px solid var(--toolbar-border-top-color);
 }
 .nav-panel-explore:not(:first-child) .context {
 	cursor: pointer;
@@ -2107,6 +2108,10 @@ body {
 .navbar-link {
 	transition: var(--default-transition);
 	padding-right: 2.5em;
+}
+.navbar-dropdown {
+	/* position above the search window when both are shown */
+	z-index: 200;
 }
 .navbar-dropdown .navbar-item {
 	padding-left: 1.5rem;
