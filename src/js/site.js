@@ -43,8 +43,7 @@
 					if (
 						(c =
 							c ||
-							((c = s.test(i.className)) &&
-								(i.firstElementChild || {}).id)) &&
+							((c = s.test(i.className)) && (i.firstElementChild || {}).id)) &&
 						(e = l.querySelector('.nav-link[href="#' + c + '"]'))
 					)
 						break;
@@ -120,9 +119,7 @@
 					(function (e, t) {
 						e = e.nextElementSibling;
 						return (
-							(!e ||
-								!t ||
-								e[e.matches ? "matches" : "msMatchesSelector"](t)) &&
+							(!e || !t || e[e.matches ? "matches" : "msMatchesSelector"](t)) &&
 							e
 						);
 					})(e, ".nav-text"));
@@ -141,8 +138,7 @@
 		(window.location.hash && t(), window.addEventListener("hashchange", t));
 })();
 function __get_copy_icon_path() {
-	return window.matchMedia &&
-		window.matchMedia("(prefers-color-scheme: dark)").matches
+	return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
 		? "/img/dark-theme/octicons-16.svg#icon-clippy"
 		: "/img/light-theme/octicons-16.svg#icon-clippy";
 }
@@ -218,8 +214,7 @@ function __get_copy_icon_path() {
 			  s.forEach(function (e, t) {
 					var o = "#" + e.id;
 					t === i || e.getBoundingClientRect().top + h(e, "paddingTop") > r
-						? (n.push(o),
-						  a.indexOf(o) < 0 && l[o].classList.add("is-active"))
+						? (n.push(o), a.indexOf(o) < 0 && l[o].classList.add("is-active"))
 						: ~a.indexOf(o) && l[a.shift()].classList.remove("is-active");
 			  }),
 			  (u.scrollTop = u.scrollHeight - u.offsetHeight),
@@ -313,9 +308,7 @@ function __get_copy_icon_path() {
 					var e;
 					t.classList.toggle("is-active") &&
 						((t.style.maxHeight = ""),
-						(e =
-							window.innerHeight -
-							Math.round(t.getBoundingClientRect().top)),
+						(e = window.innerHeight - Math.round(t.getBoundingClientRect().top)),
 						parseInt(window.getComputedStyle(t).maxHeight, 10) !== e) &&
 						(t.style.maxHeight = e + "px");
 				}
@@ -379,7 +372,7 @@ function __get_copy_icon_path() {
 					i.appendChild(n),
 					window
 						.matchMedia("(prefers-color-scheme: dark)")
-						.addEventListener("change", event => {
+						.addEventListener("change", (event) => {
 							if (c) {
 								c.src = d + __get_copy_icon_path(s);
 							}
@@ -395,8 +388,7 @@ function __get_copy_icon_path() {
 								(t = (function (e) {
 									var t,
 										n = [];
-									for (; (t = o.exec(e)); )
-										n.push(t[1].replace(s, "$1$2"));
+									for (; (t = o.exec(e)); ) n.push(t[1].replace(s, "$1$2"));
 									return n.join(" && ");
 								})(t));
 							window.navigator.clipboard.writeText(t).then(
