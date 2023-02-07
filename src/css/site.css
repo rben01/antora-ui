@@ -80,7 +80,7 @@
 	--kbd-not-keyseq-text-color: rgb(43, 43, 43);
 	--kbd-not-keyseq-bg-color: #ebebeb;
 	--kbd-not-keyseq-border-color: rgb(173, 173, 173);
-	--kbd-not-keyseq-box-shadow-color: rgba(83, 83, 83, 0.2);
+	--kbd-not-keyseq-box-shadow-color: rgb(83 83 83 / 0.2);
 	--kbd-not-keyseq-box-shadow-alt-color: white;
 	--menu-text-color: #090909;
 	--p-a-code-hover-text-color: #151515;
@@ -116,9 +116,9 @@
 	--thumb-shadow-color: #ddd;
 	--gist-table-bg-color: white;
 	--admon-text-color: white;
-	--admon-shadow-color: rgba(0, 0, 0, 0.5);
+	--admon-shadow-color: rgb(0 0 0 / 0.5);
 	--admon-note-icon-color: #217ee7;
-	--admon-tip-shadow-color: rgba(155, 155, 0, 0.8);
+	--admon-tip-shadow-color: rgb(155 155 0 / 0.8);
 	--admon-tip-icon-color: #41af46;
 	--admon-warning-icon-color: #f8b90a;
 	--admon-caution-icon-color: #bf3400;
@@ -127,8 +127,8 @@
 	--conum-bg-color: #222;
 	--hdlist-table-row-border-color: #ccc;
 
-	--search-result-dropdown-menu-box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.2),
-		0 2px 3px 0 rgba(0, 0, 0, 0.1);
+	--search-result-dropdown-menu-box-shadow: 0 1px 0 0 rgb(0 0 0 / 0.2),
+		0 2px 3px 0 rgb(0 0 0 / 0.1);
 	--search-result-dataset-border-color: #d9d9d9;
 	--search-result-dataset-bg-color: #fcfcfc;
 	--search-result-component-header-text-color: #1e1e1e;
@@ -136,7 +136,7 @@
 	--search-result-document-title-border-color: #ddd;
 	--search-result-document-title-text-color: #02060c;
 	--search-result-document-hit-text-color: #63676d;
-	--search-result-document-hit-hover-bg-color: rgba(69, 142, 225, 0.05);
+	--search-result-document-hit-hover-bg-color: rgb(69 142 225 / 0.05);
 	--search-result-document-hit--search-result-highlight-text-color: #174d8c;
 	--search-result-document-hit--search-result-highlight-bg-color: rgba(
 		143,
@@ -224,7 +224,7 @@
 		--kbd-not-keyseq-text-color: rgb(24, 24, 24);
 		--kbd-not-keyseq-bg-color: rgb(185, 185, 185);
 		--kbd-not-keyseq-border-color: rgb(151, 151, 151);
-		--kbd-not-keyseq-box-shadow-color: rgba(148, 148, 148, 0.2);
+		--kbd-not-keyseq-box-shadow-color: rgb(148 148 148 / 0.2);
 		--kbd-not-keyseq-box-shadow-alt-color: rgb(201, 201, 201);
 		--menu-text-color: #ebebeb;
 		--p-a-code-hover-text-color: #e0e0e0;
@@ -259,9 +259,9 @@
 		--thumb-border-color: rgb(17, 17, 17);
 		--thumb-shadow-color: rgb(48, 48, 48);
 		--gist-table-bg-color: rgb(24, 24, 24);
-		--admon-shadow-color: rgba(0, 0, 0, 0.5);
+		--admon-shadow-color: rgb(0 0 0 / 0.5);
 		--admon-note-icon-color: #19559a;
-		--admon-tip-shadow-color: rgba(155, 155, 0, 0.8);
+		--admon-tip-shadow-color: rgb(155 155 0 / 0.8);
 		--admon-tip-icon-color: #2d9332;
 		--admon-warning-icon-color: #fad400;
 		--admon-caution-icon-color: #cc4e20;
@@ -270,8 +270,8 @@
 		--conum-bg-color: rgb(224, 224, 224);
 		--hdlist-table-row-border-color: #444;
 
-		--search-result-dropdown-menu-box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.2),
-			0 2px 3px 0 rgba(0, 0, 0, 0.1);
+		--search-result-dropdown-menu-box-shadow: 0 1px 0 0 rgb(0 0 0 / 0.2),
+			0 2px 3px 0 rgb(0 0 0 / 0.1);
 		--search-result-dataset-border-color: #383838;
 		--search-result-dataset-bg-color: #101010;
 		--search-result-component-header-text-color: #eaeaea;
@@ -279,7 +279,7 @@
 		--search-result-document-title-border-color: #2d2d2d;
 		--search-result-document-title-text-color: #e2e8f2;
 		--search-result-document-hit-text-color: #acb4bf;
-		--search-result-document-hit-hover-bg-color: rgba(124, 182, 247, 0.05);
+		--search-result-document-hit-hover-bg-color: rgb(124 182 247 / 0.05);
 		--search-result-document-hit--search-result-highlight-text-color: #66a3e9;
 		--search-result-document-hit--search-result-highlight-bg-color: rgba(
 			95,
@@ -547,14 +547,15 @@ html.is-clipped--nav {
 }
 .nav-list {
 	list-style: none;
-	margin: 0 0 0 1.15rem;
+	margin: 0;
+	margin-left: 1.2rem;
 	padding: 0;
 }
 .nav-panel-explore .component > .nav-list {
-	margin-left: 0.75rem;
+	margin-left: 0.25rem;
 }
 .nav-menu > .nav-list + .nav-list {
-	margin-top: 0.5rem;
+	margin-top: 0.85rem;
 }
 .nav-item {
 	margin-top: 0.1em;
@@ -706,9 +707,6 @@ html.is-clipped--nav {
 .nav-panel-explore .component.is-current :has(.nav-list) {
 	margin-bottom: 0.4rem;
 }
-.nav-panel-explore > .components > .component .nav-item-expander {
-	margin-left: -1em;
-}
 .nav-panel-explore .components a:hover {
 	color: var(--toolbar-link-hover-color);
 }
@@ -838,8 +836,8 @@ html.is-clipped--nav {
 	display: inline-block;
 	height: 1.25rem;
 	width: 1.25rem;
-	margin: calc(0.625rem - 4px) 0.4rem 0.625rem 0.625rem;
-	/* unset transition in order to make the hover transition on the icon itself work */
+	margin: calc(0.625rem - 6px) 0.4rem 0.625rem 0.625rem;
+	/* unset transition in order to make the hover transition on the svg icon itself work */
 	transition: none;
 }
 .home-link .svg-icon > use.icon-home {
@@ -2313,7 +2311,7 @@ body {
 	}
 	.navbar-menu {
 		background: var(--default-bg-color);
-		box-shadow: 0 8px 16px rgba(40, 40, 40, 0.4);
+		box-shadow: 0 8px 16px rgb(40 40 40 / 0.4);
 		max-height: calc(100vh - var(--header-bar-height));
 		overflow-y: auto;
 		overscroll-behavior: none;
