@@ -131,9 +131,6 @@
 					e.classList.toggle("is-active");
 				});
 			}),
-		l.addEventListener("mousedown", function (e) {
-			1 < e.detail && e.preventDefault();
-		}),
 		l.querySelector('.nav-link[href^="#"]')) &&
 		(window.location.hash && t(), window.addEventListener("hashchange", t));
 })();
