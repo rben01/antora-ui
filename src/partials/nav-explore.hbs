@@ -1,15 +1,13 @@
 <div class="nav-panel-explore is-active" data-panel="explore">
-  {{#if page.component}}
-    <div class="context">
-      <span class="title">Navigation</span>
-      <span class="nav-explore-expander">
-        <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" viewBox="0 0 1 1">
-          <title>Discloure chevron</title>
-          <use href="#icon-chevron"></use>
-        </svg>
-      </span>
-    </div>
-  {{/if}}
+  <div class="context">
+    <span class="title">Navigation</span>
+    <span class="nav-explore-expander">
+      <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" viewBox="0 0 1 1">
+        <title>Discloure chevron</title>
+        <use href="#icon-chevron"></use>
+      </svg>
+    </span>
+  </div>
   <ul class="components">
     {{#each site.components}}
       <li

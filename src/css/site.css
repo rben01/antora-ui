@@ -1907,7 +1907,7 @@ h6 {
 	display: none;
 }
 .mobile-instructions {
-	display: block;
+	display: initial;
 }
 #footnotes {
 	font-size: 0.85em;
@@ -2330,7 +2330,7 @@ body {
 		min-height: calc(100dvh - var(--header-bar-height));
 	}
 	.desktop-instructions {
-		display: block;
+		display: initial;
 	}
 	.mobile-instructions {
 		display: none;
