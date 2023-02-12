@@ -13,6 +13,7 @@
 	--default-transition-time: 0.125s;
 	--default-transition: all var(--default-transition-time) ease, visibility 0s,
 		display 0s;
+	--scroll-behavior: smooth;
 
 	--default-bg-color: white;
 	--default-text-color: #080808;
@@ -298,6 +299,7 @@
 @media screen and (prefers-reduced-motion) {
 	:root {
 		--default-transition: none;
+		--scroll-behavior: auto;
 	}
 }
 
@@ -310,7 +312,7 @@ html {
 	box-sizing: border-box;
 	font-size: 1.0625em;
 	height: 100%;
-	scroll-behavior: smooth;
+	scroll-behavior: var(--scroll-behavior);
 	background: var(--default-bg-color);
 	color: var(--default-text-color);
 	font-family: var(--font-family);
@@ -1128,30 +1130,30 @@ h6 {
 	position: absolute;
 	text-decoration: none;
 	width: 3ex;
-	margin-left: -2rem;
+	margin-left: -1.75rem;
 	font-variation-settings: "wght" 400;
 }
 .doc :is(h1, h2, h3, h4, h5, h6) .anchor:is(a:hover, a:hover:visited) {
 	color: var(--link-hover-color);
 }
 .doc :is(h2) .anchor::before {
-	font-size: 0.65em;
+	font-size: 0.95rem;
 	content: "H₁";
 }
 .doc :is(h3) .anchor::before {
-	font-size: 0.7em;
+	font-size: 0.875rem;
 	content: "H₂";
 }
 .doc :is(h4) .anchor::before {
-	font-size: 0.75em;
+	font-size: 0.8rem;
 	content: "H₃";
 }
 .doc :is(h5) .anchor::before {
-	font-size: 0.8em;
+	font-size: 0.725rem;
 	content: "H₄";
 }
 .doc :is(h6) .anchor::before {
-	font-size: 0.85em;
+	font-size: 0.65rem;
 	content: "H₅";
 }
 .doc :is(dl, p) {
