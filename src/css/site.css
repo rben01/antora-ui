@@ -10,8 +10,9 @@
 	--header-bar-height: 3rem;
 	--toolbar-height: 2.5rem;
 
-	--default-transition-time: 0.125s;
-	--default-transition: all var(--default-transition-time) ease, visibility 0s,
+	--default-transition-duration: 0.125s;
+	--default-transition-timing-function: ease;
+	--default-transition: all var(--default-transition-duration) var(--default-transition-timing-function), visibility 0s,
 		display 0s;
 	--scroll-behavior: smooth;
 
@@ -595,7 +596,7 @@ html.is-clipped--nav {
 	top: -0.225em;
 	height: 1.35em;
 	width: 1em;
-	transition: transform 0.08s ease; /* a tad shorter than the default transition */
+	transition: transform 0.08s var(--default-transition-timing-function); /* a tad shorter than the default transition */
 }
 .nav-item-toggle .svg-icon > use {
 	fill: var(--icon-caret-color);
@@ -626,7 +627,7 @@ html.is-clipped--nav {
 	flex-direction: column;
 	z-index: inherit;
 	transform: translateY(0);
-	transition: transform var(--default-transition-time) ease;
+	transition: transform var(--default-transition-duration) var(--default-transition-timing-function);
 }
 .nav-container .nav-item-expander :is(.nav-link, .nav-text) {
 	line-height: 1.4;
@@ -1769,7 +1770,7 @@ h6 {
 	color: var(--default-text-color);
 	cursor: auto;
 	opacity: 0;
-	transition: opacity 0.5s ease 0.5s;
+	transition: opacity 0.5s var(--default-transition-timing-function) 0.5s;
 }
 .doc .source-toolbox .copy-toast::after {
 	content: "";
@@ -1936,7 +1937,7 @@ h6 {
 	width: 0.9em;
 	height: 0.9em;
 	top: 0.05em;
-	transition: var(--default-transition);
+	transition: transform var(--default-transition-duration) var(--default-transition-timing-function);
 }
 .has-ui-icon.external-link:hover::after {
 	transform: scale(1.1);
