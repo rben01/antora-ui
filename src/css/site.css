@@ -1123,22 +1123,36 @@ h6 {
 	/* font-weight: 500; */
 	font-variation-settings: "wght" 500;
 }
-.doc :is(h1, h2, h3, h4, h5, h6) .anchor {
+.doc :is(h1, h2, h3, h4, h5, h6) .anchor:is(a, a:visited) {
+	color: var(--link-text-color);
 	position: absolute;
 	text-decoration: none;
-	width: 1.75ex;
-	margin-left: -1.5ex;
-	visibility: hidden;
-	font-size: 0.8em;
-	/* font-weight: 400; */
+	width: 3ex;
+	margin-left: -2rem;
 	font-variation-settings: "wght" 400;
-	padding-top: 0.05em;
 }
-.doc :is(h1, h2, h3, h4, h5, h6) .anchor::before {
-	content: "\00a7";
+.doc :is(h1, h2, h3, h4, h5, h6) .anchor:is(a:hover, a:hover:visited) {
+	color: var(--link-hover-color);
 }
-.doc :is(h1, h2, h3, h4, h5, h6):hover .anchor {
-	visibility: visible;
+.doc :is(h2) .anchor::before {
+	font-size: 0.65em;
+	content: "H₁";
+}
+.doc :is(h3) .anchor::before {
+	font-size: 0.7em;
+	content: "H₂";
+}
+.doc :is(h4) .anchor::before {
+	font-size: 0.75em;
+	content: "H₃";
+}
+.doc :is(h5) .anchor::before {
+	font-size: 0.8em;
+	content: "H₄";
+}
+.doc :is(h6) .anchor::before {
+	font-size: 0.85em;
+	content: "H₅";
 }
 .doc :is(dl, p) {
 	margin: 0;
