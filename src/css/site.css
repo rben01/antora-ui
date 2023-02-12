@@ -1889,19 +1889,42 @@ h6 {
 	hyphens: none;
 	overflow-wrap: normal;
 }
-.doc .ui-icon {
+.doc .ui-icon,
+.doc .has-ui-icon::after {
 	display: inline-block;
 	width: 1em;
 	height: 1em;
 	margin: 0 0.1em;
-	background-color: var(--default-text-color);
+	position: relative;
+	background-color: currentColor;
+}
+.doc .has-ui-icon {
+	word-break: keep-all;
+}
+.doc .has-ui-icon::after {
+	content: "";
 }
 .ui-icon.nav-menu-icon {
-	background: var(--default-text-color);
 	clip-path: url(#icon-menu-clippath);
-	position: relative;
 	top: 0.15em;
 	margin-right: 0.14em;
+}
+.ui-icon.icon-star {
+	clip-path: url(#icon-star);
+	width: 0.85em;
+	height: 0.85em;
+}
+.has-ui-icon.external-link::after {
+	clip-path: url(#icon-external-link);
+	margin-left: 0.3em;
+	width: 0.9em;
+	height: 0.9em;
+	top: 0.05em;
+	transition: var(--default-transition);
+}
+.has-ui-icon.external-link:hover::after {
+	transform: scale(1.1);
+	transform-origin: center center;
 }
 .desktop-instructions {
 	display: none;
