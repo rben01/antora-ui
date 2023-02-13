@@ -703,7 +703,7 @@ html.is-clipped--nav {
 	padding: 0.5rem 1rem 0;
 	margin: 0;
 	overflow-y: scroll;
-	overscroll-behavior: none;
+	overscroll-behavior: contain;
 	max-height: 100%;
 	display: block;
 }
