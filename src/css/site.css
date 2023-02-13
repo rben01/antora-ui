@@ -12,8 +12,9 @@
 
 	--default-transition-duration: 0.125s;
 	--default-transition-timing-function: ease;
-	--default-transition: all var(--default-transition-duration) var(--default-transition-timing-function), visibility 0s,
-		display 0s;
+	--default-transition: all var(--default-transition-duration)
+			var(--default-transition-timing-function),
+		visibility 0s, display 0s;
 	--scroll-behavior: smooth;
 
 	--default-bg-color: white;
@@ -627,7 +628,8 @@ html.is-clipped--nav {
 	flex-direction: column;
 	z-index: inherit;
 	transform: translateY(0);
-	transition: transform var(--default-transition-duration) var(--default-transition-timing-function);
+	transition: transform var(--default-transition-duration)
+		var(--default-transition-timing-function);
 }
 .nav-container .nav-item-expander :is(.nav-link, .nav-text) {
 	line-height: 1.4;
@@ -1411,7 +1413,7 @@ h6 {
 	/* width of the `calc` part is twice padding-left above, + width of `icon i::before`
 	below, minus a bit so it looks symmetrical with the big border radius*/
 	background: linear-gradient(90deg, rgba(0, 0, 0, 0.2) 0, rgba(0, 0, 0, 0.2))
-		no-repeat 0 / calc(2 * 0.35rem + 0.9em - 0.05rem ) 100%;
+		no-repeat 0 / calc(2 * 0.35rem + 0.9em - 0.05rem) 100%;
 	vertical-align: middle;
 }
 
@@ -1989,7 +1991,8 @@ h6 {
 	width: 0.9em;
 	height: 0.9em;
 	top: 0.05em;
-	transition: transform var(--default-transition-duration) var(--default-transition-timing-function);
+	transition: transform var(--default-transition-duration)
+		var(--default-transition-timing-function);
 }
 .has-ui-icon.external-link:hover::after {
 	transform: scale(1.1);
