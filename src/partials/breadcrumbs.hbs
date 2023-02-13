@@ -16,10 +16,10 @@
         <li>&#47;</li>
         <li>
           {{~#if (and ./url (eq ./urlType 'internal'))~}}
-            {{~#if (and (not @last) (not (eq @root.page.url ./url)))}}
+            {{~#if (and (not @last) (not (eq @root.page.url ./url)))~}}
               <a href="{{{relativize ./url}}}">{{{./content}}}</a>
               {{~else~}}
-              <span>{{{./content}}}</span>
+              <a href="#">{{{./content}}}</a>
               {{~/if~}}
               {{~else~}}
               {{{./content}}} {{~/if~}}
