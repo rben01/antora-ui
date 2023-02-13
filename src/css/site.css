@@ -1280,7 +1280,7 @@ h6 {
 .doc table.tableblock {
 	font-size: 0.83333rem;
 }
-.dic
+.doc
 	:is(
 		.tablecontainer,
 		.tablecontainer + *,
