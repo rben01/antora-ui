@@ -426,6 +426,9 @@ object[type="image/svg+xml"]:not([width]) {
 ::placeholder {
 	opacity: 0.5;
 }
+.katex-display {
+	overflow-x: scroll;
+}
 
 @media screen and (min-width: 1024px) {
 	.body {
