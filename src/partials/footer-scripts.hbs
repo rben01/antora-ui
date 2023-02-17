@@ -29,7 +29,7 @@ it's high priority (should come before other scripts) --}}
 		// document.body directly, helps performance.
 		// https://atfzl.com/don-t-attach-tooltips-to-document-body
 		const footnoteHolder = document.createElement("div");
-		document.body.appendChild(footnoteHolder);
+		(document.querySelector('body .doc') ?? document.body).appendChild(footnoteHolder);
 
 		function showFootnoteBoxOnHover(elem) {
 			const FOOTNOTE_BOX_MAX_WIDTH = 400;
