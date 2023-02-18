@@ -428,6 +428,8 @@ object[type="image/svg+xml"]:not([width]) {
 }
 .katex-display {
 	overflow-x: scroll;
+	/* fixes bug in katex's stylesheet? */
+	padding-top: 4px;
 }
 
 @media screen and (min-width: 1024px) {
