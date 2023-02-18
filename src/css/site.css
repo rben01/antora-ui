@@ -431,6 +431,9 @@ object[type="image/svg+xml"]:not([width]) {
 	/* fixes bug in katex's stylesheet? */
 	padding-top: 4px;
 }
+.katex-display .katex-html {
+	overflow-y: hidden;
+}
 
 @media screen and (min-width: 1024px) {
 	.body {
