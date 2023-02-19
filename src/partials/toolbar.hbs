@@ -1,6 +1,6 @@
 <div class="toolbar" role="navigation">
   {{> nav-toggle}}
-  {{#with site.homeUrl}}
+  {{#with (or site.homeUrl @root.page.attributes.antora-site-homepage)}}
     <a href="{{{relativize this}}}" class="home-link{{#if @root.page.home}} is-current{{/if}}" title="Home">
       {{!-- <div class="icon-mask home-icon-bg"></div> --}}
       <div class="home-icon-duo" title="Home">
