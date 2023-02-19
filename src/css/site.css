@@ -2214,6 +2214,9 @@ body {
 .icon-user-home {
 	clip-path: url(#icon-user-home);
 }
+.icon-file-pdf {
+	clip-path: url(#icon-file-pdf);
+}
 :is(.navbar-item, .doc) .github-logo {
 	position: relative;
 }
@@ -2394,6 +2397,8 @@ body {
 .navbar-dropdown .navbar-item {
 	padding-left: 1.3rem;
 	padding-right: 1.5rem;
+	position: relative;
+	top: 0.1em;
 }
 .navbar-dropdown .navbar-item:hover {
 	background-color: var(--toolbar-bg-color);

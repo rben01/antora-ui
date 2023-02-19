@@ -28,6 +28,15 @@
                 <div class="site-logo github-logo github-repo-logo"></div><span class="site-url">/&nbsp;rben01</span>
               </div>
             </a>
+            {{#if @root.page.attributes.link-resume-in-header}}
+              <a class="navbar-item navbar-external-link" href="/_attachments/robert-bennett-resume.pdf"
+                target="_blank">
+                <div class="navbar-item-inner">
+                  <div class="site-logo icon-file-pdf"></div><span class="site-url"><span
+                      class="hidden">/&nbsp;</span>Résumé</span>
+                </div>
+              </a>
+            {{/if}}
           </div>
         </div>
         {{!-- <div class="navbar-item has-dropdown is-hoverable">
