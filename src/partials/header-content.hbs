@@ -15,8 +15,18 @@
         <div class="navbar-item has-dropdown is-hoverable open-left">
           <span class="navbar-link">Links</span>
           <div class="navbar-dropdown">
+            {{#if (not @root.page.attributes.dont-link-homepage-in-header)}}
+              <a class="navbar-item navbar-external-link" href="https://rltb.me" target="_blank">
+                <div class="navbar-item-inner">
+                  <div class="site-logo icon-user-home"></div><span class="site-url"><span
+                      class="hidden">/&nbsp;</span>rltb.me</span>
+                </div>
+              </a>
+            {{/if}}
             <a class="navbar-item navbar-external-link" href="https://github.com/rben01" target="_blank">
-              <div class="site-logo github-logo github-repo-logo"></div><span class="site-url">/&nbsp;rben01</span>
+              <div class="navbar-item-inner">
+                <div class="site-logo github-logo github-repo-logo"></div><span class="site-url">/&nbsp;rben01</span>
+              </div>
             </a>
           </div>
         </div>
