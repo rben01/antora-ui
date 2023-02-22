@@ -57,20 +57,20 @@ it's high priority (should come before other scripts) --}}
 			const footnoteHtml = footnoteClone.innerHTML.replace(/^\s*\.\s*/, "");
 
 			footnoteP.innerHTML = footnoteHtml;
+			footnoteBox.style.display = "block";
 			footnoteBox.style.right = null;
 			footnoteBox.style.left = "0px";
 			footnoteBox.style.top = "0px";
 
-			const elemRect = elem.getBoundingClientRect();
 			const bodyRect = document.body.getBoundingClientRect();
-
-			footnoteBox.style.display = "block";
+			const elemRect = elem.getBoundingClientRect();
+			const footnoteRect = footnoteBox.getBoundingClientRect();
 
 			let tx = false;
 			let ty = false;
 
 			if (elemRect.left - FOOTNOTE_BOX_MAX_WIDTH < 10) {
-				const px = -bodyRect.left + 10;
+				const px = Math.max(-bodyRect.left, elemRect.left - footnoteRect.width + 10) + 10;
 				footnoteBox.style.left = `${px}px`;
 
 				tx = true;
@@ -79,14 +79,12 @@ it's high priority (should come before other scripts) --}}
 				footnoteBox.style.left = `${px}px`;
 			}
 
-			const footnoteRect = footnoteBox.getBoundingClientRect();
-
 			const windowHeight = document.documentElement.clientHeight;
 			if (elemRect.top + footnoteRect.height > windowHeight) {
 				const py = -10 + window.scrollY + windowHeight;
 				footnoteBox.style.top = `${py}px`;
 			} else {
-				const py = elemRect.top - bodyRect.top;
+				const py = -5 + elemRect.top - bodyRect.top;
 				footnoteBox.style.top = `${py}px`;
 
 				ty = true;
