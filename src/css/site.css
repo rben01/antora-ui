@@ -369,6 +369,7 @@ pre {
 	font-family: var(--mono-font-family);
 	font-size: var(--mono-font-size);
 	font-stretch: expanded;
+	font-feature-settings: normal;
 }
 b,
 dt,
