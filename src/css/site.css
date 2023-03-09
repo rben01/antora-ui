@@ -2542,9 +2542,16 @@ body {
 		overscroll-behavior: none;
 		padding: 0.5rem 0;
 		border-bottom: 1px solid var(--table-border-color);
+		transition-property: opacity, transform, visibility, z-index;
+		transition-duration: var(--default-transition-duration);
+		transition-timing-function: var(--default-transition-timing-function);
 	}
+
 	.navbar-menu:not(.is-active) {
-		display: none;
+		visibility: hidden;
+		opacity: 0;
+		transform: translateY(-50px);
+		z-index: -100;
 	}
 	.navbar-menu :is(.navbar-link, a.navbar-item):hover {
 		background: var(--table-bg-color);
