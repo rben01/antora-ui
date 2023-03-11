@@ -2545,15 +2545,22 @@ body {
 		overscroll-behavior: none;
 		padding: 0.5rem 0;
 		border-bottom: 1px solid var(--table-border-color);
-		transition-property: opacity, transform, visibility, z-index;
+		transition-property: opacity, transform, visibility, z-index, clip-path;
 		transition-duration: var(--default-transition-duration);
 		transition-timing-function: var(--default-transition-timing-function);
+		clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
 	}
 
 	.navbar-menu:not(.is-active) {
 		visibility: hidden;
 		opacity: 0;
 		transform: translateY(-50px);
+		clip-path: polygon(
+			0% calc(0% + var(--header-bar-height)),
+			100% calc(0% + var(--header-bar-height)),
+			100% 100%,
+			0% 100%
+		);
 		z-index: -100;
 	}
 	.navbar-menu :is(.navbar-link, a.navbar-item):hover {
