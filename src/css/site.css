@@ -865,9 +865,11 @@ html.is-clipped--nav {
 	transition: transform var(--default-transition-duration)
 		var(--default-transition-timing-function);
 }
-.nav-toggle:hover .menu-icon-duo,
-.toolbar .home-link:hover .home-icon-duo {
+.nav-toggle:hover .menu-icon-duo {
 	transform: translate(55%, 55%) scale(1.1) translate(-50%, -50%);
+}
+.toolbar .home-link:hover .home-icon-duo {
+	transform: translate(60%, 60%) scale(1.2) translate(-50%, -50%);
 }
 .nav-toggle .icon-menu {
 	clip-path: url(#icon-menu);
