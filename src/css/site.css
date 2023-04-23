@@ -1,5 +1,5 @@
 :root {
-	--font-family: "Inter var", "Source Sans Pro", "Helvetica Neue", "Helvetica",
+	--font-family: "Figtree", "Source Sans Pro", "Helvetica Neue", "Helvetica",
 		sans-serif;
 	--header-font: var(--font-family);
 	--mono-font-family: "Iosevka RLTB Alt Web", monospace;
@@ -340,10 +340,10 @@ body {
 	overflow-wrap: break-word;
 	font-weight: var(--default-font-weight);
 
-	font-feature-settings: /* case-sensitive forms */ "case", /* open digits */ "ss01",
-		/* curved r when followed by round letter */ "ss03",
-		/* add bars to I and hook/tail to l */ "ss04";
-	/* font-variation-settings: "wght" var(--default-font-weight); */
+	/* font-feature-settings: /1* case-sensitive forms *1/ "case", /1* open digits *1/ "ss01", */
+	/* 	/1* curved r when followed by round letter *1/ "ss03", */
+	/* 	/1* add bars to I and hook/tail to l *1/ "ss04"; */
+	/* /1* font-variation-settings: "wght" var(--default-font-weight); *1/ */
 }
 .hidden {
 	visibility: hidden;
