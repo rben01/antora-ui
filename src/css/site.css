@@ -1221,19 +1221,35 @@ h6 {
 	margin: 0;
 }
 /* todo: enable this when browsers add support for color-mix */
-/* @supports (color: color-mix(in lab, currentColor 50%, var(--default-bg-color))) {
+@supports (color: color-mix(in lab, currentColor 50%, var(--default-bg-color))) {
+	:root {
+		--link-color-mix-amount: 75%;
+	}
 	.doc :is(a, a:visited) {
 		text-decoration-style: solid;
+	}
+	/* currentColor doesn't work here — lacking browser support? */
+	.doc a {
 		text-decoration-color: color-mix(
 			in lab,
-			currentColor 50%,
+			var(--link-text-color) var(--link-color-mix-amount),
 			var(--default-bg-color)
 		);
 	}
-	.doc :is(a, a:visited):hover {
-		text-decoration-color: currentColor;
+	.doc a:visited {
+		text-decoration-color: color-mix(
+			in lab,
+			var(--visited-link-text-color) var(--link-color-mix-amount),
+			var(--default-bg-color)
+		);
 	}
-} */
+	.doc a:hover {
+		text-decoration-color: var(--link-hover-color);
+	}
+	.doc a:hover:visited {
+		text-decoration-color: var(--visited-link-hover-color);
+	}
+}
 
 .doc a {
 	color: var(--link-text-color);
