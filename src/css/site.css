@@ -1193,7 +1193,6 @@ h6 {
 .doc h2:not(.discrete) {
 	border-bottom: 1px solid var(--header-h1-border-color);
 	margin-left: -1rem;
-	margin-right: -1rem;
 	padding: 0.4rem 1rem 0.1rem;
 }
 .doc h3:not(.discrete),
@@ -1201,10 +1200,15 @@ h6 {
 	font-weight: 500;
 	/* font-variation-settings: "wght" 500; */
 }
-.doc :is(h1, h2, h3, h4, h5, h6) .anchor:is(a, a:visited) {
+.doc :is(h1, h2, h3, h4, h5, h6) {
+	vertical-align: bottom;
+}
+.doc :is(h1, h2, h3, h4, h5, h6) :is(a, a:visited):is(.anchor, .anchor-after) {
 	color: var(--link-text-color);
-	position: absolute;
 	text-decoration: none;
+}
+.doc :is(h1, h2, h3, h4, h5, h6) .anchor:is(a, a:visited) {
+	position: absolute;
 	width: 3ex;
 	margin-left: -1.75rem;
 	font-weight: 400;
@@ -2473,6 +2477,48 @@ body {
 	flex-direction: column;
 }
 @media screen and (max-width: 768.5px) {
+	.doc :is(h2, h3, h4, h5, h6) .anchor {
+		display: none;
+	}
+	.doc :is(h2, h3, h4, h5, h6) {
+		position: relative;
+	}
+	.doc :is(h2, h3, h4, h5, h6) .anchor-after {
+		position: absolute;
+		right: 0;
+		bottom: 0.2em;
+		display: inline-block;
+	}
+	.doc :is(h2) .anchor-after {
+		font-size: 0.95rem;
+	}
+	.doc :is(h3) .anchor-after {
+		font-size: 0.875rem;
+	}
+	.doc :is(h4) .anchor-after {
+		font-size: 0.8rem;
+	}
+	.doc :is(h5) .anchor-after {
+		font-size: 0.725rem;
+	}
+	.doc :is(h6) .anchor-after {
+		font-size: 0.65rem;
+	}
+	.doc :is(h2) .anchor-after::after {
+		content: "H₁";
+	}
+	.doc :is(h3) .anchor-after::after {
+		content: "H₂";
+	}
+	.doc :is(h4) .anchor-after::after {
+		content: "H₃";
+	}
+	.doc :is(h5) .anchor-after::after {
+		content: "H₄";
+	}
+	.doc :is(h6) .anchor-after::after {
+		content: "H₅";
+	}
 	.navbar-menu .search-result-dropdown-menu {
 		top: calc(100% + 3em);
 		width: 100%;
