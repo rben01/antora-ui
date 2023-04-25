@@ -325,7 +325,6 @@ html {
 	font-family: var(--font-family);
 	text-size-adjust: 100%;
 }
-
 @media screen and (min-width: 1024px) {
 	html {
 		font-size: 1.15em;
@@ -2529,9 +2528,13 @@ body {
 	display: flex;
 	flex-direction: column;
 }
+/* TODO get this working */
+/* .doc :is(h2, h3, h4, h5, h6) {
+	scroll-padding-top: var(--header-bar-height);
+} */
 @media screen and (max-width: 768.5px) {
 	.doc :is(h2, h3, h4, h5, h6) .anchor {
-		display: none;
+		visibility: hidden;
 	}
 	.doc :is(h2, h3, h4, h5, h6) {
 		position: relative;
