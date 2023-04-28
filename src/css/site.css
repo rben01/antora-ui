@@ -345,11 +345,6 @@ body {
 	/* 	/1* add bars to I and hook/tail to l *1/ "ss04"; */
 	/* /1* font-variation-settings: "wght" var(--default-font-weight); *1/ */
 }
-/* TODO: add cv01 or replace both with ss02 once support for font-feature-settings is
-added to ::marker */
-ol > li::marker {
-	font-feature-settings: "ss02" on;
-}
 
 .hidden {
 	visibility: hidden;
