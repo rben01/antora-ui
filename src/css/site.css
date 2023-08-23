@@ -318,7 +318,7 @@
 }
 html {
 	box-sizing: border-box;
-	font-size: 1.6625rem;
+	font-size: 1.1625rem;
 	height: 100%;
 	scroll-behavior: var(--scroll-behavior);
 	background: var(--default-bg-color);
