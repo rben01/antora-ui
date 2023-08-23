@@ -1,11 +1,11 @@
 :root {
-	--font-family: Rotunda, "Source Sans Pro", "Helvetica Neue", "Helvetica", sans-serif;
+	--font-family: "Geologica", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 	--header-font: var(--font-family);
-	--mono-font-family: "Iosevka RLTB Alt Web", monospace;
-	--mono-font-size: 0.95em;
-	--body-letter-spacing: -0.03em;
-	--default-font-weight: 350;
-	--bold-font-weight: 650;
+	--mono-font-family: "Commit Mono", monospace;
+	--mono-font-size: 0.9em;
+	--mono-font-weight: 475; /* Commit Mono is a bit thin by default */
+	--default-font-weight: 325; /* Geologica is a bit thick by default */
+	--bold-font-weight: 700;
 	--header-bar-height: 3rem;
 	--toolbar-height: 2.5rem;
 	/* the more padding, the smaller the corresponding icons */
@@ -318,7 +318,7 @@
 }
 html {
 	box-sizing: border-box;
-	font-size: 1.1625rem;
+	font-size: 1.6625rem;
 	height: 100%;
 	scroll-behavior: var(--scroll-behavior);
 	background: var(--default-bg-color);
@@ -338,14 +338,13 @@ body {
 	tab-size: 3;
 	overflow-wrap: break-word;
 	font-weight: var(--default-font-weight);
-	font-feature-settings: "cv01" on, "cv02" on, "cv03" on, "cv04" on;
+	/* font-feature-settings: "cv01" on, "cv02" on, "cv03" on, "cv04" on; */
 
 	/* font-feature-settings: /1* case-sensitive forms *1/ "case", /1* open digits *1/ "ss01", */
 	/* 	/1* curved r when followed by round letter *1/ "ss03", */
 	/* 	/1* add bars to I and hook/tail to l *1/ "ss04"; */
 	/* /1* font-variation-settings: "wght" var(--default-font-weight); *1/ */
 }
-
 .hidden {
 	visibility: hidden;
 }
@@ -370,9 +369,9 @@ kbd,
 pre {
 	font-family: var(--mono-font-family);
 	font-size: var(--mono-font-size);
+	font-weight: var(--mono-font-weight);
 	font-stretch: expanded;
-	font-feature-settings: normal;
-	font-weight: 400;
+	font-feature-settings: "ss03" on, "ss04" on, "ss05" on;
 }
 b,
 dt,
@@ -1181,6 +1180,16 @@ h6 {
 .doc .sect1 + .sect1 {
 	margin-top: 2rem;
 }
+.sect1,
+.sect2 {
+	content-visibility: auto;
+}
+.sect1 {
+	contain-intrinsic-size: auto 1500px;
+}
+.sect2 {
+	contain-intrinsic-size: auto 750px;
+}
 .doc h1.sect0 {
 	background: var(--header-h1-text-color);
 	font-size: 1.8em;
@@ -1607,8 +1616,6 @@ h6 {
 	content: attr(title);
 	/* matches the padding-right 0.5rem above, minus a bit for visual symmetry */
 	padding-left: calc(0.5rem - 0.1rem);
-	/* shift for Rotunda baseline */
-	transform: translateY(0.1em);
 }
 .doc :is(.imageblock, .videoblock) {
 	display: flex;
@@ -2297,10 +2304,6 @@ body {
 }
 .doc .github-logo {
 	top: 0.125em;
-}
-.navbar-item .site-logo {
-	position: relative;
-	top: 0.1em;
 }
 .icon > i.fa {
 	margin-right: 0.2em;
