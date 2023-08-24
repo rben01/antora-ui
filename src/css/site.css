@@ -1,10 +1,10 @@
 :root {
-	--font-family: "Geologica", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	--font-family: "Figtree", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 	--header-font: var(--font-family);
 	--mono-font-family: "Commit Mono", monospace;
-	--mono-font-size: 0.9em;
+	--mono-font-size: 0.85em;
 	--mono-font-weight: 475; /* Commit Mono is a bit thin by default */
-	--default-font-weight: 325; /* Geologica is a bit thick by default */
+	--default-font-weight: 400;
 	--bold-font-weight: 700;
 	--header-bar-height: 3rem;
 	--toolbar-height: 2.5rem;
@@ -338,7 +338,7 @@ body {
 	tab-size: 3;
 	overflow-wrap: break-word;
 	font-weight: var(--default-font-weight);
-	/* font-feature-settings: "cv01" on, "cv02" on, "cv03" on, "cv04" on; */
+	font-feature-settings: "ss02" on;
 
 	/* font-feature-settings: /1* case-sensitive forms *1/ "case", /1* open digits *1/ "ss01", */
 	/* 	/1* curved r when followed by round letter *1/ "ss03", */
@@ -370,8 +370,8 @@ pre {
 	font-family: var(--mono-font-family);
 	font-size: var(--mono-font-size);
 	font-weight: var(--mono-font-weight);
-	font-stretch: expanded;
 	font-feature-settings: "ss03" on, "ss04" on, "ss05" on;
+	letter-spacing: normal;
 }
 b,
 dt,
@@ -1321,7 +1321,7 @@ h6 {
 	background: var(--code-parent-bg-color);
 	border-radius: 0.25em;
 	border: 1px solid var(--inline-code-border-color);
-	font-size: 0.9em;
+	font-size: var(--mono-font-size);
 	padding: 0.125em 0.25em;
 }
 .doc :is(code, pre) {
