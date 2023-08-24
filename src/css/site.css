@@ -1180,16 +1180,6 @@ h6 {
 .doc .sect1 + .sect1 {
 	margin-top: 2rem;
 }
-.sect1,
-.sect2 {
-	content-visibility: auto;
-}
-.sect1 {
-	contain-intrinsic-size: auto 1500px;
-}
-.sect2 {
-	contain-intrinsic-size: auto 750px;
-}
 .doc h1.sect0 {
 	background: var(--header-h1-text-color);
 	font-size: 1.8em;
