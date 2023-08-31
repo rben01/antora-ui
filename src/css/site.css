@@ -1,5 +1,5 @@
 :root {
-	--font-family: "Figtree", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	--font-family: "IBM Plex Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 	--header-font: var(--font-family);
 	--mono-font-family: "Commit Mono", monospace;
 	--mono-font-size: 0.85em;
@@ -11,6 +11,7 @@
 	/* the more padding, the smaller the corresponding icons */
 	--menu-icon-padding: 0.65rem;
 	--home-icon-padding: 0.6rem;
+	--text-font-features: ;
 
 	--default-transition-duration: 0.125s;
 	--default-transition-timing-function: ease;
@@ -338,7 +339,6 @@ body {
 	tab-size: 3;
 	overflow-wrap: break-word;
 	font-weight: var(--default-font-weight);
-	font-feature-settings: "ss02" on;
 
 	/* font-feature-settings: /1* case-sensitive forms *1/ "case", /1* open digits *1/ "ss01", */
 	/* 	/1* curved r when followed by round letter *1/ "ss03", */
@@ -441,7 +441,9 @@ object[type="image/svg+xml"]:not([width]) {
 .katex-display .katex-html {
 	overflow-y: hidden;
 }
-
+.fraction {
+	font-feature-settings: "frac" on;
+}
 @media screen and (min-width: 1024px) {
 	.body {
 		display: flex;
@@ -2012,9 +2014,8 @@ h6 {
 	font-style: normal;
 	line-height: 1.2;
 	text-align: center;
-	width: 1.25em;
-	height: 1.25em;
-	letter-spacing: -0.25ex;
+	width: 1.3em;
+	height: 1.3em;
 	margin-right: 0.5em;
 }
 .doc .conum[data-value]::after {
