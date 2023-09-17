@@ -1,9 +1,10 @@
 :root {
-	--font-family: "IBM Plex Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	--font-family: "Iosevka RLTB Sans Web", -system-ui, apple-system, "Segoe UI",
+		"Helvetica", "Arial", sans-serif;
 	--header-font: var(--font-family);
-	--mono-font-family: "Commit Mono", monospace;
-	--mono-font-size: 0.85em;
-	--mono-font-weight: 475; /* Commit Mono is a bit thin by default */
+	--mono-font-family: "Iosevka RLTB Web", monospace;
+	--mono-font-size: 0.95em;
+	--mono-font-weight: 400;
 	--default-font-weight: 400;
 	--bold-font-weight: 700;
 	--header-bar-height: 3rem;
@@ -225,7 +226,7 @@
 		--table-stripe-bg-color: #141414;
 		--code-parent-bg-color: #0f0f0f;
 		--code-parent-border-color: #323232;
-		--inline-code-border-color: #202020;
+		--inline-code-border-color: #373737;
 		--pre-code-text-color: rgb(245, 245, 245);
 		--kbd-keyseq-text-color: rgb(0, 0, 0);
 		--kbd-text-shadow-color: rgb(214, 214, 214);
@@ -365,12 +366,11 @@ a:active {
 	background-color: none;
 }
 code,
-kbd,
-pre {
+kbd {
 	font-family: var(--mono-font-family);
 	font-size: var(--mono-font-size);
 	font-weight: var(--mono-font-weight);
-	font-feature-settings: "ss03" on, "ss04" on, "ss05" on;
+	/* font-feature-settings: "ss03" on, "ss04" on, "ss05" on; */ /* for Commit Mono */
 	letter-spacing: normal;
 }
 b,
@@ -1313,14 +1313,12 @@ h6 {
 	background: var(--code-parent-bg-color);
 	border-radius: 0.25em;
 	border: 1px solid var(--inline-code-border-color);
-	font-size: var(--mono-font-size);
 	padding: 0.125em 0.25em;
 }
 .doc :is(code, pre) {
 	hyphens: none;
 }
 .doc pre {
-	font-size: 0.88889rem;
 	line-height: 1.5;
 	margin: 0;
 }
@@ -2516,6 +2514,9 @@ body {
 /* .doc :is(h2, h3, h4, h5, h6) {
 	scroll-padding-top: var(--header-bar-height);
 } */
+.doc :is(h2, h3, h4, h5, h6) :is(.anchor, .anchor-after) {
+	font-stretch: expanded;
+}
 @media screen and (max-width: 768.5px) {
 	.doc :is(h2, h3, h4, h5, h6) .anchor {
 		visibility: hidden;
