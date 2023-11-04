@@ -1,7 +1,7 @@
 :root {
-	--font-family: "Iosevka RLTB Sans Web", -system-ui, apple-system, "Segoe UI",
-		"Helvetica", "Arial", sans-serif;
-	--header-font: var(--font-family);
+	--font-family: "RedHatText", -system-ui, apple-system, "Segoe UI", "Helvetica",
+		"Arial", sans-serif;
+	--header-font: "RedHatDisplay", var(--font-family);
 	--mono-font-family: "Iosevka RLTB Web", monospace;
 	--mono-font-size: 0.95em;
 	--mono-font-weight: 400;
@@ -17,6 +17,9 @@
 	--default-transition-duration: 0.125s;
 	--default-transition-timing-function: ease;
 	--default-transition: all var(--default-transition-duration)
+			var(--default-transition-timing-function),
+		visibility 0s, display 0s;
+	--link-unhover-transition: all calc(var(--default-transition-duration) / 2)
 			var(--default-transition-timing-function),
 		visibility 0s, display 0s;
 	--nav-item-toggle-transition-duration: 0.08s; /* a tad shorter than the default transition */
@@ -341,6 +344,8 @@ body {
 	overflow-wrap: break-word;
 	font-weight: var(--default-font-weight);
 
+	font-feature-settings: "case" on, "ss02" on;
+
 	/* font-feature-settings: /1* case-sensitive forms *1/ "case", /1* open digits *1/ "ss01", */
 	/* 	/1* curved r when followed by round letter *1/ "ss03", */
 	/* 	/1* add bars to I and hook/tail to l *1/ "ss04"; */
@@ -349,15 +354,19 @@ body {
 .hidden {
 	visibility: hidden;
 }
+/* The effeect of var(--link-unhover-transition) here and var(--default-transition)
+below is that hovering over uses the --default-transition and unhovering uses
+--link-unhover-transition */
 a {
 	text-decoration: underline;
 	text-decoration-style: dotted;
 	color: var(--link-text-color);
-	transition: var(--default-transition);
+	transition: var(--link-unhover-transition);
 	text-decoration-thickness: 1px;
 }
 a:hover {
 	text-decoration-style: solid;
+	transition: var(--default-transition);
 }
 a:visited {
 	color: var(--visited-link-text-color);
@@ -370,6 +379,7 @@ kbd {
 	font-family: var(--mono-font-family);
 	font-size: var(--mono-font-size);
 	font-weight: var(--mono-font-weight);
+	font-feature-settings: normal;
 	/* font-feature-settings: "ss03" on, "ss04" on, "ss05" on; */ /* for Commit Mono */
 	letter-spacing: normal;
 }
@@ -1139,9 +1149,9 @@ h3,
 h4,
 h5,
 h6 {
+	font-family: var(--header-font);
 	font-weight: 400;
 }
-
 .doc :is(h1, h2, h3, h4, h5, h6) {
 	color: var(--header-text-color);
 	font-weight: 400;
@@ -1150,6 +1160,19 @@ h6 {
 	line-height: 1.3;
 	margin: 1rem 0 0;
 }
+:is(h1, .doc h1) {
+	font-weight: 500;
+}
+:is(h2, .doc h2) {
+	font-weight: 475;
+}
+:is(h3, .doc h3) {
+	font-weight: 450;
+}
+:is(h4, .doc h4) {
+	font-weight: 425;
+}
+
 .doc > .title-container {
 	margin: 1.5rem 0;
 }
@@ -1930,8 +1953,8 @@ h6 {
 }
 .doc .source-toolbox svg.copy-icon {
 	fill: currentColor;
-	position: relative;
-	bottom: 0.1em;
+	/* position: relative; */
+	/* bottom: 0.1em; */
 }
 .doc .source-toolbox .copy-toast {
 	flex: none;
@@ -2274,8 +2297,17 @@ body {
 .navbar-item .site-logo {
 	color: unset;
 }
-.navbar-item .site-url {
-	padding-top: 0.15em;
+.navbar-item-inner {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex-wrap: nowrap;
+}
+.navbar-item-inner .github-slash {
+	/* font-specific hack for Red Hat Text; its slash is a tad low */
+	display: inline-block;
+	position: relative;
+	bottom: 0.075em;
 }
 .github-logo {
 	clip-path: url(#icon-github);
@@ -2700,19 +2732,22 @@ body {
 	.navbar-item.is-hoverable:hover .navbar-dropdown {
 		display: block;
 	}
+	.navbar-link-text {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
 	.navbar-link-text::after {
 		border-width: 0 0 1.5px 1.5px;
 		border-style: solid;
 		content: "";
 		display: block;
+		width: 0.5em;
 		height: 0.5em;
 		pointer-events: none;
 		position: absolute;
-		transform: rotate(-45deg);
-		width: 0.5em;
-		margin-top: -0.5em;
+		transform: translateY(-35.3553391%) rotate(-45deg); /* ty = -1/(2*sqrt(2))*/
 		right: 1.125em;
-		top: 50%;
 	}
 	.navbar-end .navbar-link,
 	.navbar-end > .navbar-item {
