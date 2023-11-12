@@ -1,7 +1,7 @@
 :root {
-	--font-family: "RedHatText", -system-ui, apple-system, "Segoe UI", "Helvetica",
+	--font-family: "Open Sauce Two", -system-ui, apple-system, "Segoe UI", "Helvetica",
 		"Arial", sans-serif;
-	--header-font: "RedHatDisplay", var(--font-family);
+	--header-font: var(--font-family);
 	--mono-font-family: "Iosevka RLTB Web", monospace;
 	--mono-font-size: 0.95em;
 	--mono-font-weight: 400;

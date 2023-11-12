@@ -1,19 +1,16 @@
 <link rel="preconnect" href="https://my-fonts.pages.dev/">
-<link rel="preload" as="font" href="https://my-fonts.pages.dev/RedHatText/DEFAULT/RedHatTextVF.woff2">
-<link rel="preload" as="font" href="https://my-fonts.pages.dev/RedHatDisplay/DEFAULT/RedHatDisplayVF.woff2">
+<link rel="preload" as="font" href="https://my-fonts.pages.dev/Open-Sauce-Two/DEFAULT/Open-Sauce-Regular.woff2">
 <link rel="preload" as="font"
 	href="https://my-fonts.pages.dev/Iosevka/iosevka-rltb-mono/DEFAULT/iosevka-rltb-mono-regular.woff2">
 <link rel="stylesheet" href="{{{uiRootPath}}}/css/site.css" />
-<link rel="stylesheet" href="https://my-fonts.pages.dev/RedHatText/DEFAULT/RedHatText.css">
-<link rel="stylesheet" href="https://my-fonts.pages.dev/RedHatDisplay/DEFAULT/RedHatDisplay.css">
-<link rel="stylesheet" href="https://my-fonts.pages.dev/RedHatText/SUPERSCRIPTS-AND-SUBSCRIPTS/RedHatText.css">
+<link rel="stylesheet" href="https://my-fonts.pages.dev/Open-Sauce-Two/DEFAULT/Open-Sauce-Two.css">
+<link rel="stylesheet" href="https://my-fonts.pages.dev/Open-Sauce-Two/SUPERSCRIPTS-AND-SUBSCRIPTS/Open-Sauce-Two.css">
 <link rel="stylesheet" href="https://my-fonts.pages.dev/Iosevka/iosevka-rltb-mono/DEFAULT/Iosevka-RLTB-Web.css">
 <link rel="stylesheet" href="{{{uiRootPath}}}/css/code-syntax-highlight.css" />
 {{#each (split-str page.attributes.[font-unicode-blocks] ",")}}
 	{{#with (uppercase this)}}
 		<link rel="stylesheet"
 			href="https://my-fonts.pages.dev/Iosevka/iosevka-rltb-mono/{{this}}/Iosevka-RLTB-Web.css" />
-		<link rel="stylesheet" href="https://my-fonts.pages.dev/RedHatText/{{this}}/RedHatText.css" />
-		<link rel="stylesheet" href="https://my-fonts.pages.dev/RedHatDisplay/{{this}}/RedHatDisplay.css" />
+		<link rel="stylesheet" href="https://my-fonts.pages.dev/Open-Sauce-Two/{{this}}/Open-Sauce-Two.css" />
 	{{/with}}
 {{/each}}
