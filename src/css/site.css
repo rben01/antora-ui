@@ -1,6 +1,6 @@
 :root {
-	--font-family: "Open Sauce Two", -system-ui, apple-system, "Segoe UI", "Helvetica",
-		"Arial", sans-serif;
+	--font-family: "Inter 4", -system-ui, apple-system, "Segoe UI", "Helvetica", "Arial",
+		sans-serif;
 	--header-font: var(--font-family);
 	--mono-font-family: "Iosevka RLTB Web", monospace;
 	--mono-font-size: 0.95em;
@@ -344,7 +344,8 @@ body {
 	overflow-wrap: break-word;
 	font-weight: var(--default-font-weight);
 
-	font-feature-settings: "case" on, "ss02" on;
+	font-feature-settings: "cpsp" on, "cv01" on, "cv02" on, "cv05" on, "cv08" on,
+		"cv10" on, "ss03" on;
 
 	/* font-feature-settings: /1* case-sensitive forms *1/ "case", /1* open digits *1/ "ss01", */
 	/* 	/1* curved r when followed by round letter *1/ "ss03", */
